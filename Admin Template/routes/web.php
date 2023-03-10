@@ -16,6 +16,7 @@ use App\Http\Livewire\Rtl;
 
 use App\Http\Livewire\LaravelExamples\UserProfile;
 use App\Http\Livewire\LaravelExamples\UserManagement;
+use App\Http\Livewire\LaravelExamples\AddUser;
 use App\Http\Livewire\VirtualReality;
 use Illuminate\Http\Request;
 
@@ -53,4 +54,5 @@ Route::middleware('auth')->group(function () {
     Route::get('/virtual-reality', VirtualReality::class)->name('virtual-reality');
     Route::get('/user-profile', UserProfile::class)->name('user-profile');
     Route::get('/user-management', UserManagement::class)->name('user-management');
+    Route::get('/add-user', AddUser::class)->name('add-user');
 });
