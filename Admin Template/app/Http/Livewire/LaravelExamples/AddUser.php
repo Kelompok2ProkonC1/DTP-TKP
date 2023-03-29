@@ -3,9 +3,11 @@
 namespace App\Http\Livewire\LaravelExamples;
 
 use App\Models\User;
+use App\Mail\ContactFormMail;
 use Livewire\Component;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Mail;
 
 class AddUser extends Component
 {
@@ -19,7 +21,7 @@ class AddUser extends Component
         'nama' => 'required|min:3',
         'email' => 'required|email:rfc,dns|unique:users',
         'nik' => 'required|min:16',
-        'divisi' => 'required'
+        'divisi' => 'required',
     ];
 
     public function add_user()
@@ -39,12 +41,22 @@ class AddUser extends Component
         ]);
         auth()->login($user);
 
+        // User account for sending into email user.
+        $akun_user = [
+            'email' => $this->email,
+            'password' => $this->password
+        ];
+
+        // send email
+        Mail::to($this->email)->send(new ContactFormMail($akun_user));
+
         // if (env('IS_DEMO') && auth()->user()->id == 1) {
         //     $this->user->save();
         //     return back()->with('status', "User berhasil ditambahkan!");
         // }
+
         session()->flash('status', 'User berhasil ditambahkan!');
-        
+
         // Reset value input.
         $this->reset();
 
