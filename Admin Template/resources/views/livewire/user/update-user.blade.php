@@ -6,8 +6,8 @@
                     <div class="flex flex-wrap -mx-6">
                         <div class="max-w-full px-3 w-1/2 lg:flex-none">
                             <div class="mt-3 rounded-t-2xl">
-                                <h5 class="dark:text-white"><b>Add User</b></h5>
-                                <p>Create New User!</p>
+                                <h5 class="dark:text-white"><b>Update User</b></h5>
+                                <p>Update data of specific user!</p>
                             </div>
                         </div>
                         <div class="max-w-full px-3 w-1/2 lg:flex-none">
@@ -26,22 +26,22 @@
                     </div>
 
                     @endif
-                    <form wire:submit.prevent="add_user">
+                    <form action="{{ route('updating-user') }}" method="POST">
+                        @csrf
                         <div class="flex flex-wrap -mx-6">
                             <div class="max-w-full px-3 w-1/2 lg:flex-none">
                                 <div class="flex flex-col h-full">
                                     <h6 class="font-bold leading-tight uppercase text-size-xs text-slate-500">Nama</h6>
                                     <div class="mb-4">
-                                        <input wire:model.lazy="nama" type="text" class="text-size-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="Masukkan Nama User..." name="nama" aria-label="Nama"
-                                        aria-describedby="nama-addon" required autofocus/>
-                                        @error('user.nama') <p class="text-size-sm text-red-500">{{ $message }}</p>
+                                        <input type="hidden" name="id" value="{{ $user->id }}">
+                                        <input type="text" class="text-size-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="Masukkan Nama User..." name="nama" aria-label="Nama" aria-describedby="nama-addon" required minlength="3" autofocus value="{{ $user->name }}" />
+                                        @error('nama') <p class="text-size-sm text-red-500">{{ $message }}</p>
                                         @enderror
                                     </div>
                                     <h6 class="font-bold leading-tight uppercase text-size-xs text-slate-500">NIK</h6>
                                     <div class="mb-4">
-                                        <input wire:model.lazy="nik" type="text" class="text-size-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="Masukkan NIK User..." name="nik" aria-label="NIK"
-                                        aria-describedby="nik-addon" required />
-                                        @error('user.nik') <p class="text-size-sm text-red-500">{{ $message }}</p>
+                                        <input type="text" class="text-size-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="Masukkan NIK User..." name="nik" aria-label="NIK" aria-describedby="nik-addon" required minlength="16" value="{{ $user->nik }}" />
+                                        @error('nik') <p class="text-size-sm text-red-500">{{ $message }}</p>
                                         @enderror
                                     </div>
                                 </div>
@@ -50,20 +50,20 @@
                                 <div class="flex flex-col h-full">
                                     <h6 class="font-bold leading-tight uppercase text-size-xs text-slate-500">E-Mail</h6>
                                     <div class="mb-4">
-                                        <input wire:model.lazy="email" type="email" class="text-size-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="Masukkan E-Mail User..." name="email" aria-label="Email"
-                                        aria-describedby="email-addon" required />
-                                        @error('user.email') <p class="text-size-sm text-red-500">{{ $message }}</p>
+                                        <input type="email" class="text-size-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="Masukkan E-Mail User..." name="email" aria-label="Email" aria-describedby="email-addon" required value="{{ $user->email }}" readonly/>
+                                        @error('email') <p class="text-size-sm text-red-500">{{ $message }}</p>
                                         @enderror
                                     </div>
                                     <h6 class="font-bold leading-tight uppercase text-size-xs text-slate-500">Divisi</h6>
                                     <div class="mb-4">
-                                        <select wire:model.lazy="divisi" type="text" class="text-size-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="Pilih Divisi User..." name="divisi" aria-label="Divisi"
-                                        aria-describedby="divisi-addon" required>
-                                            <option disabled selected value="">Pilih Divisi User...</option>
-                                            <option value="IT">IT</option>
-                                            <option value="Administrasi">Administrasi</option>
+                                        <select type="text" class="text-size-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="Pilih Divisi User..." name="divisi" aria-label="Divisi" aria-describedby="divisi-addon" required>
+                                            @foreach ($divisions as $division)
+                                                <option value="{{ $division->nama_divisi }}" {{ $user->divisi == $division->nama_divisi ? 'selected' : '' }}>
+                                                    {{ $division->nama_divisi }}
+                                                </option>
+                                            @endforeach
                                         </select>
-                                        @error('user.divisi') <p class="text-size-sm text-red-500">{{ $message }}</p>
+                                        @error('divisi') <p class="text-size-sm text-red-500">{{ $message }}</p>
                                         @enderror
                                     </div>
                                 </div>
@@ -72,7 +72,7 @@
                         <div class="flow-root">
                             <button type="submit" class="float-right inline-block mr-6 px-6 py-3 mt-3 mb-2 font-bold text-center text-white uppercase align-middle transition-all bg-transparent border-0 rounded-lg cursor-pointer active:opacity-85 hover:scale-102 hover:shadow-soft-xs leading-pro text-size-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 bg-gradient-dark-gray hover:border-slate-700 hover:bg-slate-700 hover:text-white">Save changes</button>
                         </div>
-                    </div>
+                </div>
                 </form>
             </div>
         </div>

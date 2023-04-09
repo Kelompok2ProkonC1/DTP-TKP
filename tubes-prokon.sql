@@ -10,10 +10,50 @@ Target Server Type    : MYSQL
 Target Server Version : 50505
 File Encoding         : 65001
 
-Date: 2023-03-10 10:09:08
+Date: 2023-04-09 10:07:12
 */
 
 SET FOREIGN_KEY_CHECKS=0;
+-- ----------------------------
+-- Table structure for `categories`
+-- ----------------------------
+DROP TABLE IF EXISTS `categories`;
+CREATE TABLE `categories` (
+  `id_kategori` int(11) NOT NULL AUTO_INCREMENT,
+  `nama_kategori` varchar(255) NOT NULL,
+  `deskripsi_kategori` varchar(255) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL ON UPDATE current_timestamp(),
+  `updated_at` timestamp NULL DEFAULT NULL ON UPDATE current_timestamp(),
+  PRIMARY KEY (`id_kategori`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
+
+-- ----------------------------
+-- Records of categories
+-- ----------------------------
+INSERT INTO `categories` VALUES ('1', 'Data Science', 'daataa sciienceee', '2023-04-05 13:00:08', '2023-04-05 13:00:08');
+INSERT INTO `categories` VALUES ('2', 'Machine Learning', 'maaccchinnee learrninggg', '2023-04-05 13:00:42', '2023-04-05 13:00:42');
+INSERT INTO `categories` VALUES ('4', 'Artificial Intelligiencio', 'Berhubungan dengan kecerdasan buatan.', '2023-04-09 08:55:46', '2023-04-09 08:55:46');
+
+-- ----------------------------
+-- Table structure for `divisi`
+-- ----------------------------
+DROP TABLE IF EXISTS `divisi`;
+CREATE TABLE `divisi` (
+  `id_divisi` int(11) NOT NULL AUTO_INCREMENT,
+  `nama_divisi` varchar(50) NOT NULL,
+  `deskripsi_divisi` varchar(255) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL ON UPDATE current_timestamp(),
+  `updated_at` timestamp NULL DEFAULT NULL ON UPDATE current_timestamp(),
+  PRIMARY KEY (`id_divisi`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
+
+-- ----------------------------
+-- Records of divisi
+-- ----------------------------
+INSERT INTO `divisi` VALUES ('1', 'Information and Technology', 'IT adalah divisi Information and Technology yang waw sekali.', '2023-04-09 09:39:29', '2023-04-09 09:39:29');
+INSERT INTO `divisi` VALUES ('2', 'Administrasi', 'Dvisi berhubungan dengan administrasi', '2023-04-05 13:00:42', '2023-04-09 09:14:53');
+INSERT INTO `divisi` VALUES ('4', 'HRD', 'Divisi yang menyaring calon karyawan.', '2023-04-09 09:25:07', '2023-04-09 09:25:07');
+
 -- ----------------------------
 -- Table structure for `failed_jobs`
 -- ----------------------------
@@ -108,13 +148,15 @@ CREATE TABLE `users` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `nik` varchar(16) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `divisi` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `divisi` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `users_email_unique` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=52 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of users
 -- ----------------------------
-INSERT INTO `users` VALUES ('1', 'Alec Thompson', 'admin@softui.com', '2023-03-02 04:12:07', '$2y$10$IgeAtFaIVO/qbTgqWnvu3OwU3Lem9sonioNZK45FKbcJFYuRPva8u', '0123456789', 'Bandungg', 'Hi, I’m Alec Thompson.', 'syxyKsM4tUQVxrntTPxTx1sXcAQAg3wm8KsDEbPypN3sJhTjxnL0ExtwGsXe', '2023-03-02 04:12:07', '2023-03-10 01:34:46', '0', '');
-INSERT INTO `users` VALUES ('18', 'Nur', 'nurr@gmail.com', null, '$2y$10$.EEksj9YA1kLjoSP6aBdg.TpZjQKKa6PAFV2wragpClw7.x2Njm8e', '0123456789', 'Bandungg', 'JxnS2v', null, '2023-03-10 02:01:51', '2023-03-10 02:03:51', '1234567891234567', 'IT');
+INSERT INTO `users` VALUES ('1', 'Loe', 'admin@softui.com', '2023-03-02 04:12:07', '$2y$10$IgeAtFaIVO/qbTgqWnvu3OwU3Lem9sonioNZK45FKbcJFYuRPva8u', '01', 'Bandungg', 'Hi, I’m Alec Thompson.', 'SdNYiLEHnIyfHzhC8zo9oZwhkTCjumXb2ycbwHklC0verIyxKRQmFuGRLiwX', '2023-03-02 04:12:07', '2023-04-09 05:52:45', '1234567891234567', 'Administrasi');
+INSERT INTO `users` VALUES ('43', 'Nur', 'nurr@gmail.com', null, '$2y$10$LjFpxyFtyNEAvT7CCICTh.dVGMkV1vzphTicj/T9uHw7HbV6c5v5.', null, null, 'D36QNP', null, '2023-04-08 08:44:22', '2023-04-09 07:07:22', '1234567891234567', 'IT');
+INSERT INTO `users` VALUES ('49', 'Kamal', 'kkamall@gmail.com', null, '$2y$10$BZx9cjbX2pms.9q96A3rO.KZrEI7Qk9RVUmR18aZfT.M6KNLVi6k6', null, null, 'rMdy7Q', null, '2023-04-09 05:53:29', '2023-04-09 05:53:29', '1234567891234567', 'Administrasi');
+INSERT INTO `users` VALUES ('51', 'Budi', 'bbuddi@gmail.com', null, '$2y$10$GkzcFCq5FfH596muZq/4ou0vrkyA6Jmlc9IOXgVau0oaE45n/w2im', null, null, 'ZCM9uf', null, '2023-04-09 09:46:41', '2023-04-09 09:52:19', '1234567891234567', 'Information and Technology');

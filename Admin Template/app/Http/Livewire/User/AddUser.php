@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Livewire\LaravelExamples;
+namespace App\Http\Livewire\User;
 
 use App\Models\User;
+use App\Models\Divisi;
 use App\Mail\ContactFormMail;
 use Livewire\Component;
 use Illuminate\Support\Facades\Hash;
@@ -31,7 +32,7 @@ class AddUser extends Component
         // Generate password automatically.
         $this->password = Str::random(6);
         // Save into the database.
-        $user = User::create([
+        User::create([
             'name' => $this->nama,
             'email' => $this->email,
             'nik' => $this->nik,
@@ -39,16 +40,15 @@ class AddUser extends Component
             'password' => Hash::make($this->password),
             'about' => $this->password
         ]);
-        auth()->login($user);
 
-        // User account for sending into email user.
-        $akun_user = [
-            'email' => $this->email,
-            'password' => $this->password
-        ];
+        // // User account for sending into email user.
+        // $akun_user = [
+        //     'email' => $this->email,
+        //     'password' => $this->password
+        // ];
 
-        // send email
-        Mail::to($this->email)->send(new ContactFormMail($akun_user));
+        // // send email
+        // Mail::to($this->email)->send(new ContactFormMail($akun_user));
 
         // if (env('IS_DEMO') && auth()->user()->id == 1) {
         //     $this->user->save();
@@ -59,13 +59,11 @@ class AddUser extends Component
 
         // Reset value input.
         $this->reset();
-
-        // Return the same view.
-        return view('livewire.laravel-examples.add-user');
     }
 
     public function render()
     {
-        return view('livewire.laravel-examples.add-user');
+        $divisions = Divisi::all();
+        return view('livewire.user.add-user', compact('divisions'));
     }
 }
