@@ -9,9 +9,10 @@
                             <div
                                 class="relative flex flex-col min-w-0 mt-32 break-words bg-transparent border-0 shadow-none rounded-2xl bg-clip-border">
                                 <div class="p-6 pb-0 mb-0 bg-transparent border-b-0 rounded-t-2xl text-center">
-                                    <h3 class="relative z-10 font-bold text-transparent bg-gradient-cyan bg-clip-text">
+                                    <h3 class="text-transparent bg-gradient-cyan bg-clip-text">
                                         Welcome</h3>
-                                    <p class="mb-0">Fill in the following form to continue<br></p>
+                                    <p class="mb-0 font-poppins">Fill in the following form<br></p>
+                                    <p class="mb-0">to continue<br></p>
                                 </div>
 
                                 <div class="flex-auto p-6">
@@ -56,18 +57,18 @@
                                                 class="mt-0.54 rounded-10 duration-250 ease-soft-in-out after:rounded-circle after:shadow-soft-2xl after:duration-250 checked:after:translate-x-5.25 h-5-em relative float-left -ml-12 w-10 cursor-pointer appearance-none border border-solid border-gray-200 bg-slate-800/10 bg-none bg-contain bg-left bg-no-repeat align-top transition-all after:absolute after:top-px after:h-4 after:w-4 after:translate-x-px after:bg-white after:content-[''] checked:border-slate-800/95 checked:bg-slate-800/95 checked:bg-none checked:bg-right"
                                                 type="checkbox" id="rememberMe">
                                             <label
-                                                class="mb-2 ml-1 font-normal cursor-pointer select-none text-size-sm text-slate-700 right-10"
+                                                class="mb-2 ml-1 cursor-pointer select-none text-size-sm right-10"
                                                 for="rememberMe">Remember me?</label>
                                                 
-                                                <a class="invisible">aaaaaaaaaaaa</a>
+                                                <a class="invisible">aaaaaaaaaa</a>
 
                                                 <a href="{{ route('forgot-password') }}"
                                            class="relative z-10 font-semibold bg-clip-text text-xs pl-5 hover:underline">Forgot Password</a><br />
                                         </div>
                                         <div class="text-center">
                                             <button type="submit"
-                                                class="inline-block w-full px-6 py-3 mt-6 mb-0 font-bold text-center text-white uppercase align-middle transition-all bg-transparent border-0 rounded-lg cursor-pointer shadow-soft-md bg-x-25 bg-150 leading-pro text-size-xs ease-soft-in tracking-tight-soft bg-gradient-cyan hover:scale-102 hover:shadow-soft-xs active:opacity-85">Sign
-                                                in</button>
+                                                class="inline-block w-full px-6 py-3 mt-6 mb-0 font-bold text-center text-white uppercase align-middle transition-all bg-transparent border-0 rounded-lg cursor-pointer shadow-soft-md bg-x-25 bg-150 leading-pro text-size-xs ease-soft-in tracking-tight-soft bg-gradient-cyan hover:scale-102 hover:shadow-soft-xs active:opacity-85">Login
+                                                </button>
                                         </div>
                                     </form>
                                 </div>
@@ -77,10 +78,10 @@
                                         {{-- Forgot your password? Reset your password
                                         <a href="{{ route('forgot-password') }}"
                                             class="relative z-10 font-semibold text-transparent bg-gradient-cyan bg-clip-text">here</a>.<br /> --}}
-                                        Don't have an account?
+                                        {{-- Don't have an account?
                                         <a href="{{ route('register') }}"
                                             class="relative z-10 font-semibold text-transparent bg-gradient-cyan bg-clip-text">Sign
-                                            up</a>.
+                                            up</a>. --}}
                                     </p>
                                 </div>
                             </div>

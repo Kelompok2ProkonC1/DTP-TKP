@@ -33,9 +33,13 @@
 
     <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('assets') }}/img/apple-icon.png" />
     <link rel="icon" type="image/png" href="{{ asset('assets') }}/img/favicon.png" />
-    <title>Soft UI Dashboard TALL by Creative Tim & UPDIVISION</title>
+    <title>DTP-TKP</title>
     <!-- Fonts and icons -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;1,200;1,300;1,400&display=swap" rel="stylesheet">
+
     <!-- Nucleo Icons -->
     <link href="{{ asset('assets') }}/css/nucleo-icons.css" rel="stylesheet" />
     <link href="{{ asset('assets') }}/css/nucleo-svg.css" rel="stylesheet" />
@@ -49,7 +53,11 @@
 
     <!-- Main Styling -->
     <link href="{{ asset('assets') }}/css/styles.css?v=1.0.3" rel="stylesheet" />
-
+    <style>
+        body{
+            font-family: 'Poppins', sans-serif !important;
+        }
+    </style>
     @vite('resources/css/app.css')
 
     @livewireStyles

@@ -1,4 +1,5 @@
 const plugin = require("tailwindcss/plugin");
+const defaultTheme = require('tailwindcss/defaultTheme')
 
 module.exports = {
     mode: "jit",
@@ -723,10 +724,11 @@ module.exports = {
             DEFAULT: "1",
         },
         fontFamily: {
-            sans: ["Open Sans"],
+            sans: ["Poppins", 'Open Sans'],
             serif: ['SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace', "serif"],
             body: ["Roboto", "sans-serif"],
             awesome: ["FontAwesome"],
+            poppins: ['Poppins'],
         },
         fontSize: ({ theme }) => ({
             ...theme("spacing"),
