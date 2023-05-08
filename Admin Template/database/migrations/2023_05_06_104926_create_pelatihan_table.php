@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('judul_pelatihan')->required();
             $table->string('tempat_pelatihan')->required();
             $table->string('scope_pelatihan', 20)->required();
-            $table->boolean('bersetifikat')->required();
+            $table->boolean('bersertifikat')->required();
             $table->string('gambar_pelatihan')->required();
             $table->string('deskripsi_pelatihan')->required();
             $table->bigInteger('biaya_pelatihan')->required();

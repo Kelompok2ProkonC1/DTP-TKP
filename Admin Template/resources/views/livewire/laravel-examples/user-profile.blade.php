@@ -121,8 +121,8 @@
                                     </h6>
 
                                     <div class="mb-4">
-                                        <input wire:model.lazy="user.name" type="text" class="text-size-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="Name" id="user-name" required />
-                                        @error('user.name') <p class="text-size-sm text-red-500">{{ $message }}</p>
+                                        <input wire:model.lazy="user.nama_user" type="text" class="text-size-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="Name" id="user-name" required />
+                                        @error('user.nama_user') <p class="text-size-sm text-red-500">{{ $message }}</p>
                                         @enderror
                                     </div>
 
@@ -141,23 +141,23 @@
                             <div class="max-w-full px-3 w-1/2 lg:flex-none">
                                 <div class="flex flex-col h-full">
 
-                                    <h6 class="font-bold leading-tight uppercase text-size-xs text-slate-500">Phone
-                                        number
+                                    <h6 class="font-bold leading-tight uppercase text-size-xs text-slate-500">NIK
                                     </h6>
 
                                     <div class="mb-4">
-                                        <input wire:model.lazy="user.phone" type="phone" class="text-size-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="Phone number" id="phone" required />
-                                        @error('user.phone') <p class="text-size-sm text-red-500">{{ $message }}</p>
+                                        <input wire:model.lazy="user.nik_user" type="phone" class="text-size-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="NIK" id="phone" required />
+                                        @error('user.nik_user') <p class="text-size-sm text-red-500">{{ $message }}</p>
                                         @enderror
 
                                     </div>
 
-                                    <h6 class="font-bold leading-tight uppercase text-size-xs text-slate-500">Location
+                                    <h6 class="font-bold leading-tight uppercase text-size-xs text-slate-500">Divisi
                                     </h6>
 
                                     <div class="mb-4">
-                                        <input wire:model.lazy="user.location" type="text" class="text-size-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="Location" id="user-location" required />
-                                        @error('user.location') <p class="text-size-sm text-red-500">{{ $message }}</p>
+                                        <input wire:model.lazy="user.id_divisi" type="text" class="text-size-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="Divisi" id="user-location" required />
+                                        
+                                        @error('user.id_divisi') <p class="text-size-sm text-red-500">{{ $message }}</p>
                                         @enderror
 
                                     </div>
@@ -167,14 +167,14 @@
 
                         </div>
 
-                        <h6 class="font-bold leading-tight uppercase text-size-xs text-slate-500">About Me</h6>
+                        <!-- <h6 class="font-bold leading-tight uppercase text-size-xs text-slate-500">About Me</h6>
 
                         <div class="mb-4">
                             <textarea wire:model.lazy="user.about" rows="4" class="text-size-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="Say something about yourself" id="user-about">  </textarea>
                             @error('user.about') <p class="text-size-sm text-red-500">{{ $message }}</p> @enderror
 
 
-                        </div>
+                        </div> -->
                         <div class="flow-root">
 
                             <button type="submit" class="float-right inline-block px-6 py-3 mt-6 mb-2 font-bold text-center text-white uppercase align-middle transition-all bg-transparent border-0 rounded-lg cursor-pointer active:opacity-85 hover:scale-102 hover:shadow-soft-xs leading-pro text-size-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 bg-gradient-dark-gray hover:border-slate-700 hover:bg-slate-700 hover:text-white">Save changes</button>

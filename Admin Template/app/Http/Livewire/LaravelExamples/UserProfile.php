@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\LaravelExamples;
 
 use App\Models\User;
+use App\Models\Divisi;
 
 use Livewire\Component;
 
@@ -11,11 +12,11 @@ class UserProfile extends Component
     public User $user;
 
     protected $rules = [
-        'user.name' => 'max:40|min:3',
+        'user.nama_user' => 'max:40|min:3',
         'user.email' => 'email:rfc,dns',
-        'user.phone' => 'max:13|min:11',
-        'user.about' => 'max:200',
-        'user.location' => 'min:3'
+        'user.nik_user' => 'max:13|min:11',
+        // 'user.about' => 'max:200',
+        'user.id_divisi' => 'min:1'
     ];
 
     public function mount()
@@ -40,6 +41,8 @@ class UserProfile extends Component
     }
     public function render()
     {
-        return view('livewire.laravel-examples.user-profile');
+        $divisi = Divisi::all();
+        
+        return view('livewire.laravel-examples.user-profile', compact('divisi'));
     }
 }

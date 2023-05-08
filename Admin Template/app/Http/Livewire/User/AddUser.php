@@ -17,12 +17,14 @@ class AddUser extends Component
     public $nik = '';
     public $divisi = '';
     public $password;
+    public $role = '';
 
     protected $rules = [
         'nama' => 'required|min:3',
         'email' => 'required|email:rfc,dns|unique:users',
         'nik' => 'required|min:16',
         'divisi' => 'required',
+        'role' => 'required',
     ];
 
     public function add_user()
@@ -33,12 +35,12 @@ class AddUser extends Component
         $this->password = Str::random(6);
         // Save into the database.
         User::create([
-            'name' => $this->nama,
+            'nama_user' => $this->nama,
             'email' => $this->email,
-            'nik' => $this->nik,
-            'divisi' => $this->divisi,
+            'nik_user' => $this->nik,
+            'id_divisi' => $this->divisi,
             'password' => Hash::make($this->password),
-            'about' => $this->password
+            'role_user' => $this->role
         ]);
 
         // // User account for sending into email user.

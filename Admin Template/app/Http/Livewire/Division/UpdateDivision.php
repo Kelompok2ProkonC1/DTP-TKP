@@ -20,6 +20,7 @@ class UpdateDivision extends Component
 
         // Find specific user.
         $division = Divisi::find($request->input('id'));
+        $nama_divisi = Divisi::where('id', $request->input('id'))->value('nama_divisi');
 
         // Update the user's data
         $division->nama_divisi = $request->input('nama_divisi');
@@ -28,6 +29,7 @@ class UpdateDivision extends Component
         // Save the changes to the database
         $division->save();
 
+        session()->flash('status', 'Divisi ' . $nama_divisi . ' berhasil diupdate!');
         return redirect()->route('division-management');
     }
 

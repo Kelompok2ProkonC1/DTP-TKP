@@ -20,6 +20,7 @@ class UpdateCategory extends Component
 
         // Find specific user.
         $category = Category::find($request->input('id'));
+        $nama_kategori = Category::where('id', $request->input('id'))->value('nama_kategori');
 
         // Update the user's data
         $category->nama_kategori = $request->input('nama_kategori');
@@ -28,6 +29,7 @@ class UpdateCategory extends Component
         // Save the changes to the database
         $category->save();
 
+        session()->flash('status', 'Kategori ' . $nama_kategori . ' berhasil diupdate!');
         return redirect()->route('category-management');
     }
 

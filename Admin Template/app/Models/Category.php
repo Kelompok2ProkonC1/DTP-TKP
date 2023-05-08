@@ -11,8 +11,11 @@ class Category extends Model
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    // Set tabel
+    protected $table = 'kategori';
+
     // Set primary key (default => 'id')
-    protected $primaryKey = 'id_kategori';
+    // protected $primaryKey = 'id_kategori';
 
     protected $fillable = [
         'nama_kategori',

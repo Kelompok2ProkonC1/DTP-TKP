@@ -13,13 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('user', function (Blueprint $table) {
+        Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('nama_user')->required();
-            $table->string('nik_user')->required();
-            $table->string('email_user')->required();
-            $table->string('pass_user')->required();
-            $table->string('role_user', 10)->required();
+            $table->string('nik_user', 18)->required();
+            $table->string('email')->required();
+            $table->string('password')->required();
+            $table->string('role_user', 12)->required();
             $table->unsignedBigInteger('id_divisi')->required();
             $table->foreign('id_divisi')->references('id')->on('divisi')->onDelete('restrict');
             $table->timestamps();
@@ -33,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user');
+        Schema::dropIfExists('users');
     }
 };

@@ -7,17 +7,17 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Database\Eloquent\Model;
 
-class Divisi extends Model
+class Pengajuan extends Model
 {
     use HasApiTokens, HasFactory, Notifiable;
 
-    protected $table = 'divisi';
+    protected $table = 'pengajuan';
 
     // Set primary key (default => 'id')
     // protected $primaryKey = 'id_divisi';
 
-    protected $fillable = [
-        'nama_divisi',
-        'deskripsi_divisi',
-    ];
+    // protected $fillable = [
+    //     'nama_divisi',
+    //     'deskripsi_divisi',
+    // ];
 }

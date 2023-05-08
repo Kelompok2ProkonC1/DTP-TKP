@@ -24,6 +24,9 @@ use App\Http\Livewire\Category\UpdateCategory;
 use App\Http\Livewire\Division\DivisionManagement;
 use App\Http\Livewire\Division\AddDivision;
 use App\Http\Livewire\Division\UpdateDivision;
+use App\Http\Livewire\PengajuanPelatihan\Verifikasi;
+use App\Http\Livewire\PengajuanPelatihan\InfoPengajuan;
+use App\Http\Livewire\PengajuanPelatihan\History;
 use App\Http\Livewire\VirtualReality;
 use Illuminate\Http\Request;
 
@@ -62,6 +65,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/rtl', Rtl::class)->name('rtl');
     Route::get('/virtual-reality', VirtualReality::class)->name('virtual-reality');
     Route::get('/user-profile', UserProfile::class)->name('user-profile');
+
     // Manage user
     Route::get('/user-management', UserManagement::class)->name('user-management');
     Route::get('/add-user', AddUser::class)->name('add-user');
@@ -71,16 +75,27 @@ Route::middleware('auth')->group(function () {
     Route::post('/updating-user', [UpdateUser::class, 'update_user'])->name('updating-user');
     // Route::get('/user-management/update-user/{id}', [UserController::class, 'showUpdateUser'])->name('show-update-user');
     // Route::post('/user-management/updating-user', [UserController::class, 'updateUser'])->name('update-user');
+
     // Manage category
     Route::get('/category-management', CategoryManagement::class)->name('category-management');
     Route::get('/add-category', AddCategory::class)->name('add-category');
     Route::post('/category-management/delete-category', [CategoryManagement::class, 'delete_category'])->name('delete-category');
     Route::post('/update-category', UpdateCategory::class)->name('update-category');
     Route::post('/updating-category', [UpdateCategory::class, 'update_category'])->name('updating-category');
+
     // Manage division
     Route::get('/division-management', DivisionManagement::class)->name('division-management');
     Route::get('/add-division', AddDivision::class)->name('add-division');
     Route::post('/category-management/delete-division', [DivisionManagement::class, 'delete_division'])->name('delete-division');
     Route::post('/update-division', UpdateDivision::class)->name('update-division');
     Route::post('/updating-division', [UpdateDivision::class, 'update_division'])->name('updating-division');
+
+    // Submission
+    Route::get('/verifikasi', Verifikasi::class)->name('verifikasi');
+    Route::post('/info-pengajuan', InfoPengajuan::class)->name('info-pengajuan');
+    Route::post('/approve-pengajuan', [Verifikasi::class, 'aprrove_pengajuan'])->name('approve-pengajuan');
+    Route::post('/disapprove-pengajuan', [Verifikasi::class, 'disaprrove_pengajuan'])->name('disapprove-pengajuan');
+
+    // History
+    Route::get('/history', History::class)->name('history');
 });

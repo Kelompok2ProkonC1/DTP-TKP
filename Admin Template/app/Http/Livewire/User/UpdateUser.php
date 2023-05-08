@@ -4,8 +4,8 @@ namespace App\Http\Livewire\User;
 
 use Illuminate\Http\Request;
 use Livewire\Component;
-use App\Models\User;
 use App\Models\Divisi;
+use App\Models\User;
 
 class UpdateUser extends Component
 {
@@ -21,17 +21,19 @@ class UpdateUser extends Component
 
         // Find specific user.
         $user = User::find($request->input('id'));
+        $nama_user = User::where('id', $request->input('id'))->value('nama_user');
 
         // Update the user's data
-        $user->name = $request->input('nama');
+        $user->nama_user = $request->input('nama');
         $user->email = $request->input('email');
-        $user->nik = $request->input('nik');
-        $user->divisi = $request->input('divisi');
+        $user->nik_user = $request->input('nik');
+        $user->id_divisi = $request->input('divisi');
+        $user->role_user = $request->input('role');
 
         // Save the changes to the database
         $user->save();
 
-        session()->flash('status', 'User berhasil diupdate!');
+        session()->flash('status', 'User ' . $nama_user . ' berhasil diupdate!');
 
         return redirect()->route('user-management');
     }

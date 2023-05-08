@@ -12,7 +12,7 @@
                         </div>
                         <div class="max-w-full px-3 w-1/2 lg:flex-none">
                             <div class="mx-6">
-                                <a class="float-right inline-block px-6 py-3 mt-6 mb-2 font-bold text-center text-white uppercase align-middle transition-all bg-transparent border-0 rounded-lg cursor-pointer shadow-soft-md bg-150 bg-x-25 leading-pro text-size-xs bg-gradient-fuchsia hover:shadow-soft-2xl hover:scale-102" href="{{ url('user-management') }}">Back To List</a>
+                                <a class="float-right inline-block px-6 py-3 mt-6 mb-2 font-bold text-center text-white uppercase align-middle transition-all bg-transparent border-0 rounded-lg cursor-pointer shadow-soft-md bg-150 bg-x-25 leading-pro text-size-xs bg-gradient-fuchsia hover:shadow-soft-2xl hover:scale-102" href="{{ url()->previous() }}">Back To List</a>
                             </div>
                         </div>
                     </div>
@@ -34,13 +34,13 @@
                                     <h6 class="font-bold leading-tight uppercase text-size-xs text-slate-500">Nama</h6>
                                     <div class="mb-4">
                                         <input type="hidden" name="id" value="{{ $user->id }}">
-                                        <input type="text" class="text-size-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="Masukkan Nama User..." name="nama" aria-label="Nama" aria-describedby="nama-addon" required minlength="3" autofocus value="{{ $user->name }}" />
+                                        <input type="text" class="text-size-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="Masukkan Nama User..." name="nama" aria-label="Nama" aria-describedby="nama-addon" required minlength="3" autofocus value="{{ $user->nama_user }}" />
                                         @error('nama') <p class="text-size-sm text-red-500">{{ $message }}</p>
                                         @enderror
                                     </div>
                                     <h6 class="font-bold leading-tight uppercase text-size-xs text-slate-500">NIK</h6>
                                     <div class="mb-4">
-                                        <input type="text" class="text-size-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="Masukkan NIK User..." name="nik" aria-label="NIK" aria-describedby="nik-addon" required minlength="16" value="{{ $user->nik }}" />
+                                        <input type="text" class="text-size-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="Masukkan NIK User..." name="nik" aria-label="NIK" aria-describedby="nik-addon" required minlength="16" value="{{ $user->nik_user }}" />
                                         @error('nik') <p class="text-size-sm text-red-500">{{ $message }}</p>
                                         @enderror
                                     </div>
@@ -58,12 +58,32 @@
                                     <div class="mb-4">
                                         <select type="text" class="text-size-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="Pilih Divisi User..." name="divisi" aria-label="Divisi" aria-describedby="divisi-addon" required>
                                             @foreach ($divisions as $division)
-                                                <option value="{{ $division->nama_divisi }}" {{ $user->divisi == $division->nama_divisi ? 'selected' : '' }}>
+                                                <option value="{{ $division->id }}" {{ $user->id_divisi == $division->id ? 'selected' : '' }}>
                                                     {{ $division->nama_divisi }}
                                                 </option>
                                             @endforeach
                                         </select>
                                         @error('divisi') <p class="text-size-sm text-red-500">{{ $message }}</p>
+                                        @enderror
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="max-w-full px-3 w-1/2 lg:flex-none">
+                                <div class="flex flex-col h-full">
+                                    <h6 class="font-bold leading-tight uppercase text-size-xs text-slate-500">Role</h6>
+                                    <div class="mb-4">
+                                        <select type="text" class="text-size-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="Pilih Role User..." name="role" aria-label="Role" aria-describedby="role-addon" required>
+                                            <option value="Super Admin" {{ $user->role_user == 'Super Admin' ? 'selected' : '' }}>
+                                                Super Admin
+                                            </option>
+                                            <option value="Admin" {{ $user->role_user == 'Admin' ? 'selected' : '' }}>
+                                                Admin
+                                            </option>
+                                            <option value="Karyawan" {{ $user->role_user == 'Karyawan' ? 'selected' : '' }}>
+                                                Karyawan
+                                            </option>
+                                        </select>
+                                        @error('role') <p class="text-size-sm text-red-500">{{ $message }}</p>
                                         @enderror
                                     </div>
                                 </div>
