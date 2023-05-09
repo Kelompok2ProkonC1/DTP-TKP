@@ -11,11 +11,7 @@ class AdminMiddleware
     {
         if (auth()->check() && (auth()->user()->role_user === 'Admin' || auth()->user()->role_user === 'Super Admin')) {
             return $next($request);
-            // return route('profile');
         }
-        
-        // return route('login');
-        // abort(403, 'Unauthorized action.');
         return back();
     }
 }
