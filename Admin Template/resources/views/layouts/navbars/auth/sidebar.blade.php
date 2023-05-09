@@ -74,6 +74,9 @@
           </a>
         </li>
 
+        <?php if(auth()->user()->role_user === 'Admin' || auth()->user()->role_user === 'Super Admin')
+        { ?>
+        
         <li class="w-full mt-4">
           <h6 class="{{ (Request::is('rtl') ? 'pr-6 mr-2' : 'pl-6 ml-2') }} font-bold leading-tight uppercase text-size-xs opacity-60">
             Management</h6>
@@ -151,6 +154,8 @@
             <span class="{{ (Request::is('rtl') ? 'mr-1' : 'ml-1') }} duration-300 opacity-100 pointer-events-none ease-soft">History</span>
           </a>
         </li>
+
+        <?php } ?>
 
         {{-- <li class="w-full mt-4">
           <h6 class="{{ (Request::is('rtl') ? 'pr-6 mr-2' : 'pl-6 ml-2') }} font-bold leading-tight uppercase text-size-xs opacity-60">

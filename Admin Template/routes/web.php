@@ -55,16 +55,24 @@ Route::middleware('guest')->group(function () {
     Route::get('/reset-password/{id}', ResetPassword::class)->name('reset-password')->middleware('signed');
 });
 
-Route::middleware('auth')->group(function () {
+
+Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', Dashboard::class)->name('dashboard');
-    Route::get('/billing', Billing::class)->name('billing');
+    Route::get('/user-profile', UserProfile::class)->name('user-profile');
+});
+
+Route::middleware(['auth', 'karyawan'])->group(function () {
+
+});
+
+Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/profile', Profile::class)->name('profile');
+    Route::get('/billing', Billing::class)->name('billing');
     Route::get('/tables', Tables::class)->name('tables');
     Route::get('/static-sign-in', StaticSignIn::class)->name('sign-in');
     Route::get('/static-sign-up', StaticSignUp::class)->name('static-sign-up');
     Route::get('/rtl', Rtl::class)->name('rtl');
     Route::get('/virtual-reality', VirtualReality::class)->name('virtual-reality');
-    Route::get('/user-profile', UserProfile::class)->name('user-profile');
 
     // Manage user
     Route::get('/user-management', UserManagement::class)->name('user-management');
