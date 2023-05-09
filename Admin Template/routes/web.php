@@ -27,6 +27,7 @@ use App\Http\Livewire\Division\UpdateDivision;
 use App\Http\Livewire\PengajuanPelatihan\Verifikasi;
 use App\Http\Livewire\PengajuanPelatihan\InfoPengajuan;
 use App\Http\Livewire\PengajuanPelatihan\History;
+use App\Http\Livewire\PengajuanPelatihan\PengajuanPelatihan;
 use App\Http\Livewire\VirtualReality;
 use Illuminate\Http\Request;
 
@@ -55,14 +56,20 @@ Route::middleware('guest')->group(function () {
     Route::get('/reset-password/{id}', ResetPassword::class)->name('reset-password')->middleware('signed');
 });
 
-
+// Page untuk user karyawan, admin, dan super admin
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', Dashboard::class)->name('dashboard');
     Route::get('/user-profile', UserProfile::class)->name('user-profile');
+    
+    // Log Pengajuan Pelatihan
+    Route::get('/history', History::class)->name('history');
+    Route::post('/info-pengajuan', InfoPengajuan::class)->name('info-pengajuan');
 });
 
+// Page untuk user karyawan dan super admin
 Route::middleware(['auth', 'karyawan'])->group(function () {
-
+    // Pengajuan pelatihan
+    Route::get('/pengajuan-pelatihan', PengajuanPelatihan::class)->name('pengajuan-pelatihan');
 });
 
 Route::middleware(['auth', 'admin'])->group(function () {
@@ -100,10 +107,6 @@ Route::middleware(['auth', 'admin'])->group(function () {
 
     // Submission
     Route::get('/verifikasi', Verifikasi::class)->name('verifikasi');
-    Route::post('/info-pengajuan', InfoPengajuan::class)->name('info-pengajuan');
     Route::post('/approve-pengajuan', [Verifikasi::class, 'aprrove_pengajuan'])->name('approve-pengajuan');
     Route::post('/disapprove-pengajuan', [Verifikasi::class, 'disaprrove_pengajuan'])->name('disapprove-pengajuan');
-
-    // History
-    Route::get('/history', History::class)->name('history');
 });

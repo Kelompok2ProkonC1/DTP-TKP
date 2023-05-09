@@ -44,7 +44,7 @@
                         </div>
                     </div>
                     <div class="-mx-6 px-3">
-                        <h6 class="font-bold leading-tight uppercase text-size-xs text-slate-500">Deskripsi Kategori</h6>
+                        <h6 class="font-bold leading-tight uppercase text-size-xs text-slate-500">Deskripsi Pelatihan</h6>
                         <div class="mb-4">
                             <textarea rows="4" class="text-size-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow">{{ $pelatihan->deskripsi_pelatihan }}</textarea>
                         </div>

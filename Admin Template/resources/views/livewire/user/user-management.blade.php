@@ -50,7 +50,7 @@
                         <tbody>
                             <?php $number = $range * 10 - 10 + 1; ?>
                             @foreach ($users as $index => $user)
-                            @if($index >= $range * 10 - 10 && $index < $range * 10)
+                            @if($index >= $range * 10 - 10 && $index < $range * 10 && auth()->user()->id != $user->id)
                             <tr>
                                 <td class="pl-6 align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
                                     <p class="mb-0 font-semibold leading-tight text-size-xs">{{ $number }}</p>

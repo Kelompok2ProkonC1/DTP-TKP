@@ -17,7 +17,7 @@
     </div>
 
     <hr class="h-px mt-0 bg-transparent {{ (Request::is('virtual-reality') ? 'bg-gradient-horizontal-dark' : 'via-black/40 bg-gradient-to-r from-transparent to-transparent') }} " />
-    
+
     <!-- Nama class di dalam tag div di bawah. Kalau dimasukkin jadi lebih kecil (muncul scroller) gak tau kenapa. -->
     <!-- h-sidenav -->
     <div class="items-center block w-auto max-h-screen overflow-auto grow basis-full">
@@ -74,73 +74,97 @@
           </a>
         </li>
 
-        <?php if(auth()->user()->role_user === 'Admin' || auth()->user()->role_user === 'Super Admin')
-        { ?>
-        
-        <li class="w-full mt-4">
-          <h6 class="{{ (Request::is('rtl') ? 'pr-6 mr-2' : 'pl-6 ml-2') }} font-bold leading-tight uppercase text-size-xs opacity-60">
-            Management</h6>
-        </li>
+        <?php if (auth()->user()->role_user === 'Karyawan' || auth()->user()->role_user === 'Super Admin') { ?>
 
-        <li class="mt-0.5 w-full">
-          <a class="py-2.7 text-size-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors
+          <li class="w-full mt-4">
+            <h6 class="{{ (Request::is('rtl') ? 'pr-6 mr-2' : 'pl-6 ml-2') }} font-bold leading-tight uppercase text-size-xs opacity-60">
+              Pengajuan Pelatihan</h6>
+          </li>
+
+          <li class="mt-0.5 w-full">
+            <a class="py-2.7 text-size-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors
+              {{ (Request::is('pengajuan-pelatihan') ? 'shadow-soft-xl rounded-lg bg-white font-semibold text-slate-700' : '') }}" href="{{ url('pengajuan-pelatihan') }}">
+
+              <div class="{{ (Request::is('pengajuan-pelatihan') ? ' bg-gradient-fuchsia' : '') }} shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center stroke-0 text-center xl:p-2.5">
+
+                <i style="font-size: 1rem;" class="fas fa-lg fa-list-ul ps-2 pe-2 text-center text-dark {{ (Request::is('pengajuan-pelatihan') ? 'text-white' : 'text-dark') }} " aria-hidden="true"></i>
+
+              </div>
+              <span class="{{ (Request::is('rtl') ? 'mr-1' : 'ml-1') }} duration-300 opacity-100 pointer-events-none ease-soft">Pengajuan</span>
+            </a>
+          </li>
+
+        <?php } ?>
+
+
+        <?php if (auth()->user()->role_user === 'Admin' || auth()->user()->role_user === 'Super Admin') { ?>
+
+          <li class="w-full mt-4">
+            <h6 class="{{ (Request::is('rtl') ? 'pr-6 mr-2' : 'pl-6 ml-2') }} font-bold leading-tight uppercase text-size-xs opacity-60">
+              Management</h6>
+          </li>
+
+          <li class="mt-0.5 w-full">
+            <a class="py-2.7 text-size-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors
               {{ (Request::is('user-management', 'add-user', 'update-user') ? 'shadow-soft-xl rounded-lg bg-white font-semibold text-slate-700' : '') }}" href="{{ url('user-management') }}">
 
-            <div class="{{ (Request::is('user-management', 'add-user', 'update-user') ? ' bg-gradient-fuchsia' : '') }} shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center stroke-0 text-center xl:p-2.5">
+              <div class="{{ (Request::is('user-management', 'add-user', 'update-user') ? ' bg-gradient-fuchsia' : '') }} shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center stroke-0 text-center xl:p-2.5">
 
-              <i style="font-size: 1rem;" class="fas fa-lg fa-list-ul ps-2 pe-2 text-center text-dark {{ (Request::is('user-management', 'add-user', 'update-user') ? 'text-white' : 'text-dark') }} " aria-hidden="true"></i>
+                <i style="font-size: 1rem;" class="fas fa-lg fa-list-ul ps-2 pe-2 text-center text-dark {{ (Request::is('user-management', 'add-user', 'update-user') ? 'text-white' : 'text-dark') }} " aria-hidden="true"></i>
 
-            </div>
-            <span class="{{ (Request::is('rtl') ? 'mr-1' : 'ml-1') }} duration-300 opacity-100 pointer-events-none ease-soft">User
-              Management</span>
-          </a>
-        </li>
+              </div>
+              <span class="{{ (Request::is('rtl') ? 'mr-1' : 'ml-1') }} duration-300 opacity-100 pointer-events-none ease-soft">User
+                Management</span>
+            </a>
+          </li>
 
-        <li class="mt-0.5 w-full">
-          <a class="py-2.7 text-size-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors
+          <li class="mt-0.5 w-full">
+            <a class="py-2.7 text-size-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors
               {{ (Request::is('category-management', 'add-category', 'update-category') ? 'shadow-soft-xl rounded-lg bg-white font-semibold text-slate-700' : '') }}" href="{{ url('category-management') }}">
 
-            <div class="{{ (Request::is('category-management', 'add-category', 'update-category') ? ' bg-gradient-fuchsia' : '') }} shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center stroke-0 text-center xl:p-2.5">
+              <div class="{{ (Request::is('category-management', 'add-category', 'update-category') ? ' bg-gradient-fuchsia' : '') }} shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center stroke-0 text-center xl:p-2.5">
 
-              <i style="font-size: 1rem;" class="fas fa-lg fa-list-ul ps-2 pe-2 text-center text-dark {{ (Request::is('category-management', 'add-category', 'update-category') ? 'text-white' : 'text-dark') }} " aria-hidden="true"></i>
+                <i style="font-size: 1rem;" class="fas fa-lg fa-list-ul ps-2 pe-2 text-center text-dark {{ (Request::is('category-management', 'add-category', 'update-category') ? 'text-white' : 'text-dark') }} " aria-hidden="true"></i>
 
-            </div>
-            <span class="{{ (Request::is('rtl') ? 'mr-1' : 'ml-1') }} duration-300 opacity-100 pointer-events-none ease-soft">Category
-              Management</span>
-          </a>
-        </li>
+              </div>
+              <span class="{{ (Request::is('rtl') ? 'mr-1' : 'ml-1') }} duration-300 opacity-100 pointer-events-none ease-soft">Category
+                Management</span>
+            </a>
+          </li>
 
-        <li class="mt-0.5 w-full">
-          <a class="py-2.7 text-size-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors
+          <li class="mt-0.5 w-full">
+            <a class="py-2.7 text-size-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors
               {{ (Request::is('division-management', 'add-division', 'update-division') ? 'shadow-soft-xl rounded-lg bg-white font-semibold text-slate-700' : '') }}" href="{{ url('division-management') }}">
 
-            <div class="{{ (Request::is('division-management', 'add-division', 'update-division') ? ' bg-gradient-fuchsia' : '') }} shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center stroke-0 text-center xl:p-2.5">
+              <div class="{{ (Request::is('division-management', 'add-division', 'update-division') ? ' bg-gradient-fuchsia' : '') }} shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center stroke-0 text-center xl:p-2.5">
 
-              <i style="font-size: 1rem;" class="fas fa-lg fa-list-ul ps-2 pe-2 text-center text-dark {{ (Request::is('division-management', 'add-division', 'update-division') ? 'text-white' : 'text-dark') }} " aria-hidden="true"></i>
+                <i style="font-size: 1rem;" class="fas fa-lg fa-list-ul ps-2 pe-2 text-center text-dark {{ (Request::is('division-management', 'add-division', 'update-division') ? 'text-white' : 'text-dark') }} " aria-hidden="true"></i>
 
-            </div>
-            <span class="{{ (Request::is('rtl') ? 'mr-1' : 'ml-1') }} duration-300 opacity-100 pointer-events-none ease-soft">Division
-              Management</span>
-          </a>
-        </li>
+              </div>
+              <span class="{{ (Request::is('rtl') ? 'mr-1' : 'ml-1') }} duration-300 opacity-100 pointer-events-none ease-soft">Division
+                Management</span>
+            </a>
+          </li>
 
-        <li class="w-full mt-4">
-          <h6 class="{{ (Request::is('rtl') ? 'pr-6 mr-2' : 'pl-6 ml-2') }} font-bold leading-tight uppercase text-size-xs opacity-60">
-            Pengajuan Pelatihan</h6>
-        </li>
+          <li class="w-full mt-4">
+            <h6 class="{{ (Request::is('rtl') ? 'pr-6 mr-2' : 'pl-6 ml-2') }} font-bold leading-tight uppercase text-size-xs opacity-60">
+              Pengajuan Pelatihan</h6>
+          </li>
 
-        <li class="mt-0.5 w-full">
-          <a class="py-2.7 text-size-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors
+          <li class="mt-0.5 w-full">
+            <a class="py-2.7 text-size-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors
               {{ (Request::is('verifikasi') || (collect(explode('/', url()->previous()))->last() == 'verifikasi' && Request::is('info-pengajuan')) ? 'shadow-soft-xl rounded-lg bg-white font-semibold text-slate-700' : '') }}" href="{{ url('verifikasi') }}">
 
-            <div class="{{ (Request::is('verifikasi')  || (collect(explode('/', url()->previous()))->last() == 'verifikasi' && Request::is('info-pengajuan')) ? ' bg-gradient-fuchsia' : '') }} shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center stroke-0 text-center xl:p-2.5">
+              <div class="{{ (Request::is('verifikasi')  || (collect(explode('/', url()->previous()))->last() == 'verifikasi' && Request::is('info-pengajuan')) ? ' bg-gradient-fuchsia' : '') }} shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center stroke-0 text-center xl:p-2.5">
 
-              <i style="font-size: 1rem;" class="fas fa-lg fa-list-ul ps-2 pe-2 text-center text-dark {{ (Request::is('verifikasi')  || (collect(explode('/', url()->previous()))->last() == 'verifikasi' && Request::is('info-pengajuan')) ? 'text-white' : 'text-dark') }} " aria-hidden="true"></i>
+                <i style="font-size: 1rem;" class="fas fa-lg fa-list-ul ps-2 pe-2 text-center text-dark {{ (Request::is('verifikasi')  || (collect(explode('/', url()->previous()))->last() == 'verifikasi' && Request::is('info-pengajuan')) ? 'text-white' : 'text-dark') }} " aria-hidden="true"></i>
 
-            </div>
-            <span class="{{ (Request::is('rtl') ? 'mr-1' : 'ml-1') }} duration-300 opacity-100 pointer-events-none ease-soft">Verifikasi</span>
-          </a>
-        </li>
+              </div>
+              <span class="{{ (Request::is('rtl') ? 'mr-1' : 'ml-1') }} duration-300 opacity-100 pointer-events-none ease-soft">Verifikasi</span>
+            </a>
+          </li>
+
+        <?php } ?>
 
         <li class="mt-0.5 w-full">
           <a class="py-2.7 text-size-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors
@@ -155,11 +179,9 @@
           </a>
         </li>
 
-        <?php } ?>
-
         {{-- <li class="w-full mt-4">
           <h6 class="{{ (Request::is('rtl') ? 'pr-6 mr-2' : 'pl-6 ml-2') }} font-bold leading-tight uppercase text-size-xs opacity-60">
-            Page examples</h6>
+        Page examples</h6>
         </li>
 
 
@@ -374,15 +396,15 @@
             <i class="top-0 z-10 text-transparent ni ni-diamond text-size-lg bg-gradient-slate bg-clip-text opacity-80" sidenav-card-icon></i>
           </div>
           {{-- <div class="transition-all duration-200 ease-nav-brand"> --}}
-            {{-- <h6 class="mb-0 text-white {{ (Request::is('rtl') ? 'text-right' : '') }}">Need help?</h6> --}}
-            {{-- <p class="mt-0 mb-4 font-semibold leading-tight text-size-xs {{ (Request::is('rtl') ? 'text-right' : '') }}">
-              Please check our docs</p> --}}
-            {{-- <a href="https://www.creative-tim.com/learning-lab/tailwind/html/quick-start/soft-ui-dashboard/" target="_blank" class="inline-block w-full px-8 py-2 mb-0 font-bold text-center text-black uppercase transition-all ease-in bg-white border-0 border-white rounded-lg shadow-soft-md bg-150 leading-pro text-size-xs hover:shadow-soft-2xl hover:scale-102">Documentation</a> --}}
-          {{-- </div> --}}
-        {{-- </div> --}}
-      {{-- </div> --}}
-      <!-- pro btn  -->
-      {{-- <a class="inline-block w-full px-6 py-3 my-4 font-bold text-center text-white uppercase align-middle transition-all ease-in border-0 rounded-lg select-none shadow-soft-md bg-150 bg-x-25 leading-pro text-size-xs bg-gradient-fuchsia hover:shadow-soft-2xl hover:scale-102" href="https://www.creative-tim.com/product/soft-ui-dashboard-pro-tall" target="_blank">Upgrade to pro</a> --}}
+    {{-- <h6 class="mb-0 text-white {{ (Request::is('rtl') ? 'text-right' : '') }}">Need help?</h6> --}}
+    {{-- <p class="mt-0 mb-4 font-semibold leading-tight text-size-xs {{ (Request::is('rtl') ? 'text-right' : '') }}">
+    Please check our docs</p> --}}
+    {{-- <a href="https://www.creative-tim.com/learning-lab/tailwind/html/quick-start/soft-ui-dashboard/" target="_blank" class="inline-block w-full px-8 py-2 mb-0 font-bold text-center text-black uppercase transition-all ease-in bg-white border-0 border-white rounded-lg shadow-soft-md bg-150 leading-pro text-size-xs hover:shadow-soft-2xl hover:scale-102">Documentation</a> --}}
+    {{-- </div> --}}
+    {{-- </div> --}}
+    {{-- </div> --}}
+    <!-- pro btn  -->
+    {{-- <a class="inline-block w-full px-6 py-3 my-4 font-bold text-center text-white uppercase align-middle transition-all ease-in border-0 rounded-lg select-none shadow-soft-md bg-150 bg-x-25 leading-pro text-size-xs bg-gradient-fuchsia hover:shadow-soft-2xl hover:scale-102" href="https://www.creative-tim.com/product/soft-ui-dashboard-pro-tall" target="_blank">Upgrade to pro</a> --}}
     {{-- </div> --}}
   </aside>
 

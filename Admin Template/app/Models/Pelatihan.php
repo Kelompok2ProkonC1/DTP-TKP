@@ -16,8 +16,16 @@ class Pelatihan extends Model
     // Set primary key (default => 'id')
     // protected $primaryKey = 'id_divisi';
 
-    // protected $fillable = [
-    //     'nama_divisi',
-    //     'deskripsi_divisi',
-    // ];
+    protected $fillable = [
+        'judul_pelatihan',
+        'id_kategori',
+        'deskripsi_pelatihan',
+        'tanggal_dimulai',
+        'tanggal_berakhir',
+        'biaya_pelatihan',
+        'tempat_pelatihan',
+        'bersetifikat',
+        'scope_pelatihan',
+        'gambar_pelatihan',
+    ];
 }

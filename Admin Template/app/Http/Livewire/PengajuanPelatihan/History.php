@@ -12,39 +12,17 @@ use App\Models\Divisi;
 
 class History extends Component
 {
-    // Approve specific pengajuan pelatihan
-    public function aprrove_pengajuan(Request $request)
-    {
-        $pengajuan = Pengajuan::find($request->input('id'));
-        $pengajuan->status_pengajuan = 'Diterima';
-        $pengajuan->tanggal_acc = now();
-        $pengajuan->save();
-
-        session()->flash('status', 'Pengajuan pelatihan berhasil diterima!');
-
-        // redirect back to the previous page
-        return redirect()->route('verifikasi');
-    }
-
-    // Disapprove specific pengajuan pelatihan
-    public function disaprrove_pengajuan(Request $request)
-    {
-        // delete data with the specified ID
-        $pengajuan = Pengajuan::find($request->input('id'));
-        $pengajuan->status_pengajuan = 'Ditolak';
-        // $pengajuan->tanggal_acc = now();
-        $pengajuan->save();
-
-        session()->flash('status', 'Pengajuan pelatihan berhasil ditolak!');
-
-        // redirect back to the previous page
-        return redirect()->route('verifikasi');
-    }
-
     public function render(Request $request)
     {
         $users = User::all();
-        $pengajuan = Pengajuan::where('status_pengajuan', '!=', 'Belum')->get();
+        if(auth()->user()->role_user === 'Admin' || auth()->user()->role_user === 'Super Admin')
+        {
+            $pengajuan = Pengajuan::where('status_pengajuan', '!=', 'Belum')->get();
+        }
+        else if(auth()->user()->role_user === 'Karyawan')
+        {
+            $pengajuan = Pengajuan::where('status_pengajuan', '!=', 'Belum')->where('id_user', auth()->user()->id)->get();
+        }
         $pelatihan = Pelatihan::all();
         $kategori = Category::all();
         $divisi = Divisi::all();
