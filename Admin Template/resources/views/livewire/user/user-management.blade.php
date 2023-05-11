@@ -114,7 +114,7 @@
                     <button {{ $range != 1 ? '' : 'disabled' }}><h4><i class="fas fa-angle-left"></i></h4></button>
                 </form>
                 <span style="pointer-events: none;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                <h6 style="pointer-events: none;">. . .</h6>
+                <h6 style="pointer-events: none;">{{ $range }}</h6>
                 <span style="pointer-events: none;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
                 <form action="{{ url('user-management') }}">
                     <input type="hidden" name="range" value="{{ $range + 1 }}">

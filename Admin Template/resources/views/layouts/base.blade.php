@@ -32,7 +32,7 @@
     @endif
 
     <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('assets') }}/img/apple-icon.png" />
-    <link rel="icon" type="image/png" href="{{ asset('assets') }}/img/favicon.png" />
+    <link rel="icon" type="image/png" href="{{ asset('assets') }}/img/logo_profile.png" />
     <title>DTP-TKP</title>
     <!-- Fonts and icons -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />

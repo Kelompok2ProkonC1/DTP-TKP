@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('pengajuan', function (Blueprint $table) {
             $table->id();
             $table->date('tanggal_pengajuan')->required();
-            $table->date('tanggal_acc')->nullable();
+            $table->date('tanggal_verifikasi')->nullable();
             $table->string('dokumen_pengajuan')->required();
             $table->string('status_pengajuan', 10)->required();
             $table->unsignedBigInteger('id_pelatihan')->required();

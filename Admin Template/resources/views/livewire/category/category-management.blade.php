@@ -56,7 +56,7 @@
                                     <p class="mb-0 font-semibold leading-tight text-size-xs">{{ $category->nama_kategori }}</p>
                                 </td>
                                 <td class="p-2 align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
-                                    <p id="deskripsi_kategori" class="mb-0 font-semibold leading-tight text-size-xs" style="max-width: 200px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{{ $category->deskripsi_kategori }}</p>
+                                    <p id="deskripsi_kategori" class="mb-0 font-semibold leading-tight text-size-xs whitespace-pre-line" style="max-width: 250px; ">{{ $category->deskripsi_kategori }}</p>
                                 </td>
                                 <td class="p-2 text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
                                     <p class="mb-0 font-semibold leading-tight text-size-xs">{{ date('Y-m-d', $category->created_at->timestamp) }}</p>
@@ -96,7 +96,7 @@
                     <button {{ $range != 1 ? '' : 'disabled' }}><h4><i class="fas fa-angle-left"></i></h4></button>
                 </form>
                 <span style="pointer-events: none;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                <h6 style="pointer-events: none;">. . .</h6>
+                <h6 style="pointer-events: none;">{{ $range }}</h6>
                 <span style="pointer-events: none;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
                 <form action="{{ url('category-management') }}">
                     <input type="hidden" name="range" value="{{ $range + 1 }}">

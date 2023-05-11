@@ -1,4 +1,4 @@
-<div fixed-plugin>
+{{-- <div fixed-plugin>
     <a fixed-plugin-button class="bottom-7.5 {{ (Request::is('rtl') ? 'left-7.5' : ' right-7.5') }} text-size-xl z-990 shadow-soft-lg rounded-circle fixed cursor-pointer bg-white px-4 py-2 text-slate-700">
       <i class="py-2 pointer-events-none fa fa-cog"> </i>
     </a>
@@ -61,4 +61,4 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> --}}

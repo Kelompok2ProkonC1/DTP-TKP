@@ -49,16 +49,12 @@ class Verifikasi extends Component
         $kategori = Category::all();
         $divisi = Divisi::all();
 
-        if($request->has('range'))
-        {
+        if ($request->has('range')) {
             $range = $request->input('range');
-        }
-        else
-        {
+        } else {
             $range = 1;
         }
 
         return view('livewire.pengajuan-pelatihan.verifikasi', compact('divisi', 'users', 'pengajuan', 'pelatihan', 'kategori', 'range'));
-    }  
+    }
 }
-?>
