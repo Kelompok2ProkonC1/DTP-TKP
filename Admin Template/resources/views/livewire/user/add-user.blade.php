@@ -32,15 +32,15 @@
                                 <div class="flex flex-col h-full">
                                     <h6 class="font-bold leading-tight uppercase text-size-xs text-slate-500">Nama</h6>
                                     <div class="mb-4">
-                                        <input wire:model.lazy="nama" type="text" class="text-size-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="Masukkan Nama User..." name="nama" aria-label="Nama" aria-describedby="nama-addon" pattern=".{3,}"  required title="minimum 3 characters" autofocus/>
-                                        @error('nama') 
+                                        <input wire:model.lazy="nama" type="text" class="text-size-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="Masukkan Nama User..." name="nama" aria-label="Nama" aria-describedby="nama-addon" pattern=".{3,}" required title="minimum 3 characters" autofocus />
+                                        @error('nama')
                                         {{-- <p class="text-size-sm text-red-500">{{ $message }}</p> --}}
                                         @enderror
                                     </div>
                                     <h6 class="font-bold leading-tight uppercase text-size-xs text-slate-500">NIK</h6>
                                     <div class="mb-4">
-                                        <input wire:model.lazy="nik" type="text" class="text-size-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="Masukkan NIK User..." name="nik" aria-label="NIK" aria-describedby="nik-addon" pattern=".{16,}"  maxlength = "16"required title="must 16 digit numbers"/>
-                                        @error('nik') 
+                                        <input wire:model.lazy="nik" type="text" class="text-size-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="Masukkan NIK User..." name="nik" aria-label="NIK" aria-describedby="nik-addon" pattern=".{16,}" maxlength="16" required title="must 16 digit numbers" />
+                                        @error('nik')
                                         {{-- <p class="text-size-sm text-red-500">{{ $message }}</p> --}}
                                         @enderror
                                     </div>
@@ -52,7 +52,7 @@
                                     <div class="mb-4">
                                         <input wire:model.lazy="email" type="email" class="text-size-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="Masukkan E-Mail User..." name="email" aria-label="Email" aria-describedby="email-addon" required />
                                         @error('email')
-                                         {{-- <p class="text-size-sm text-red-500">{{ $message }}</p> --}}
+                                        {{-- <p class="text-size-sm text-red-500">{{ $message }}</p> --}}
                                         @enderror
                                     </div>
                                     <h6 class="font-bold leading-tight uppercase text-size-xs text-slate-500">Divisi</h6>
@@ -72,18 +72,24 @@
                                 <div class="flex flex-col h-full">
                                     <h6 class="font-bold leading-tight uppercase text-size-xs text-slate-500">Role</h6>
                                     <div class="mb-4">
-                                        <select wire:model.lazy="role" type="text" class="text-size-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="Pilih Role User..." name="role" aria-label="Role" aria-describedby="role-addon" required>
-                                            <option disabled selected value="">Pilih Role User...</option>
-                                            <option value="Super Admin">
-                                                Super Admin
-                                            </option>
-                                            <option value="Admin">
-                                                Admin
-                                            </option>
-                                            <option value="Karyawan">
-                                                Karyawan
-                                            </option>
-                                        </select>
+                                        @if(auth()->user()->role_user == 'Super Admin')
+                                            <select wire:model.lazy="role" type="text" class="text-size-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="Pilih Role User..." name="role" aria-label="Role" aria-describedby="role-addon" required>
+                                                <option disabled selected value="">Pilih Role User...</option>
+                                                <option value="Super Admin">
+                                                    Super Admin
+                                                </option>
+                                                <option value="Admin">
+                                                    Admin
+                                                </option>
+                                                <option value="Karyawan">
+                                                    Karyawan
+                                                </option>
+                                            </select>
+                                        @endif
+                                        @if(auth()->user()->role_user == 'Admin')
+                                            <input wire:model.lazy="role" type="role" class="text-size-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" name="role"
+                                            value="Karyawan" aria-label="Role" aria-describedby="role-addon" required readonly/>
+                                        @endif
                                         @error('role') <p class="text-size-sm text-red-500">{{ $message }}</p>
                                         @enderror
                                     </div>

@@ -17,7 +17,7 @@ class Verifikasi extends Component
     {
         $pengajuan = Pengajuan::find($request->input('id'));
         $pengajuan->status_pengajuan = 'Diterima';
-        $pengajuan->tanggal_acc = now();
+        $pengajuan->tanggal_verifikasi = now();
         $pengajuan->save();
 
         session()->flash('status', 'Pengajuan pelatihan berhasil diterima!');
@@ -32,7 +32,7 @@ class Verifikasi extends Component
         // delete data with the specified ID
         $pengajuan = Pengajuan::find($request->input('id'));
         $pengajuan->status_pengajuan = 'Ditolak';
-        // $pengajuan->tanggal_acc = now();
+        $pengajuan->tanggal_verifikasi = now();
         $pengajuan->save();
 
         session()->flash('status', 'Pengajuan pelatihan berhasil ditolak!');

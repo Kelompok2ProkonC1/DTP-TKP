@@ -65,6 +65,11 @@ class AddUser extends Component
 
     public function render()
     {
+        if(auth()->user()->role_user == 'Admin')
+        {
+            $this->role = 'Karyawan';
+        }
+
         $divisions = Divisi::all();
         return view('livewire.user.add-user', compact('divisions'));
     }

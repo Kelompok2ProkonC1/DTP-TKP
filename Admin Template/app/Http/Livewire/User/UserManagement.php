@@ -24,7 +24,14 @@ class UserManagement extends Component
 
     public function render(Request $request)
     {
-        $users = User::all();
+        if(auth()->user()->role_user == 'Admin')
+        {
+            $users = User::where('role_user', 'Karyawan')->get();
+        }
+        else
+        {
+            $users = User::all();
+        }
         $divisi = Divisi::all();
 
         if($request->has('range'))
