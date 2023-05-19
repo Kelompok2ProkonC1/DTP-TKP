@@ -18,9 +18,11 @@ class Pengajuan extends Model
 
     protected $fillable = [
         'tanggal_pengajuan',
+        'tanggal_verifikasi',
         'id_pelatihan',
         'id_user',
+        'id_surat',
+        'id_admin',
         'status_pengajuan',
-        'dokumen_pengajuan',
     ];
 }

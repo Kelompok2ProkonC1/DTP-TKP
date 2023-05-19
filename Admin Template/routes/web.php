@@ -28,6 +28,7 @@ use App\Http\Livewire\PengajuanPelatihan\Verifikasi;
 use App\Http\Livewire\PengajuanPelatihan\InfoPengajuan;
 use App\Http\Livewire\PengajuanPelatihan\History;
 use App\Http\Livewire\PengajuanPelatihan\PengajuanPelatihan;
+use App\Http\Livewire\PengajuanPelatihan\SuratPelatihan;
 use App\Http\Livewire\VirtualReality;
 use Illuminate\Http\Request;
 
@@ -64,6 +65,10 @@ Route::middleware(['auth'])->group(function () {
     // Log Pengajuan Pelatihan
     Route::get('/history', History::class)->name('history');
     Route::post('/info-pengajuan', InfoPengajuan::class)->name('info-pengajuan');
+    // Surat
+    Route::post('/surat', SuratPelatihan::class)->name('surat');
+    Route::post('/download-surat', [SuratPelatihan::class, 'downloadPDF'])->name('download-pdf');
+
 });
 
 // Page untuk user karyawan dan super admin

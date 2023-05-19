@@ -109,17 +109,17 @@
 
                                 <td class="p-2 text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
                                     <p class="mb-0 font-semibold leading-tight text-base">
-                                    <form action="{{ route('info-pengajuan') }}" method="POST" style="display: inline;">
+                                    <form action="{{ route('info-pengajuan') }}" method="POST"  style="display: inline;" class="ml-3">
                                         @csrf
                                         <input type="hidden" name="id" value="{{ $p->id }}" class="mr-3">
                                         <!-- Add other form fields here -->
                                         <button type="submit"><i class="fas fa-search" aria-hidden="true"></i></button>
                                     </form>
-                                    <form action="{{ url('history') }}" method="POST" style="display: inline;" class="ml-3">
+                                    <form action="{{ route('surat') }}" method="POST"  style="display: inline;" class="ml-3">
                                         @csrf
-                                        <input type="hidden" name="id" value="{{ $p->id }}">
+                                        <input type="hidden" name="id" value="{{ $p->id }}" class="ml-3">
                                         <!-- Add other form fields here -->
-                                        <button type="submit" onclick="return confirm('Apakah Anda yakin ingin menolak pengajuan pelatihan tersebut?')"><i class="fas fa-download" aria-hidden="true"></i></button>
+                                        <button type="submit"  class="fas fa-file" aria-hidden="true"></i></button>
                                     </form>
                                     </p>
                                 </td>
