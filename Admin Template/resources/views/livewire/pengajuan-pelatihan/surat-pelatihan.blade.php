@@ -9,9 +9,9 @@
                             <div style="margin-left: 20px;">
                                 <div style="background-color: #ffffff; color: black; width: 210mm; height: 297mm; border: 1px solid #ccc; padding: 60px; display: center; justify-content: center;">
                                     <div style="margin-top: 20px;">
-                                      <!-- <div style="text-align: right; float: right;">
-                                        <img src="{{ asset('logo/logo_divisi.png') }}" alt="Logo Perusahaan" style="width: 180px;">
-                                    </div> -->
+                                      <div style="text-align: right; float: right;">
+                                        <img src="{{ asset('logo_divisi.png') }}" alt="Logo Perusahaan" style="width: 180px;">
+                                    </div>
 
 
                                         <div style="clear: both;"></div>
@@ -19,7 +19,7 @@
                                             <p style="margin: 20px; font-size: 20px; font-weight: bold;">Surat Persetujuan Pelatihan</p>
                                         </div>
                                             <p style="font-weight: bold;">No. {{ sprintf("%03d", $surat->nomer_surat)  }}/{{ date("d-m-Y", strtotime($pelatihan->tanggal_verifikasi)) }}</p>
-                                            <p style="margin-top: 40px; text-align: justify;">
+                                            <p style="margin-top: 30px; text-align: justify;">
                                             Dengan hormat,<br><br>
                                             Sehubungan dengan pengajuan pelatihan karyawan yang diajukan oleh karyawan  <b>{{ $karyawan->nama_user }}</b> dari  <b>Divisi  {{ $div_karyawan->nama_divisi }}</b>, kami memberikan persetujuan untuk melaksanakan pelatihan tersebut.<br><br>
                                             Dengan ini kami persilahkan kepada karyawan yang bersangkuan untuk melaksanakan pelatihan dengan rincian sebagai berikut :
@@ -33,7 +33,7 @@
                                             <tr>
                                                 <td>Tanggal Pelatihan</td>
                                                 <td>:</td>
-                                                <td>{{ date("d-m-Y", strtotime($pelatihan->tanggal_dimulai)) }} - {{ date("d-m-Y", strtotime($pelatihan->tanggal_berakhir)) }}</td>
+                                                <td>{{ date("d-m-Y", strtotime($pelatihan->tanggal_dimulai)) }} s/d {{ date("d-m-Y", strtotime($pelatihan->tanggal_berakhir)) }}</td>
                                             </tr>
                                             <tr>
                                                 <td>Tempat Pelatihan</td>
@@ -52,11 +52,11 @@
                                             </tr>
                                         </table>
                                         <p style="margin-top: 20px; text-align: justify;">Demikianlah surat ini kami sampaikan sebagai tindak lanjut dari pengajuan pelatihan karyawan. Atas perhatian dan kerjasamanya kami ucapkan terimakasih</p>
-                                        <p style="margin-top: 60px;">Hormat kami,</p>
+                                        <p style="margin-top: 60px;font-weight: bold;">Hormat kami,</p>
                                         <!-- <div style="text-align: left; margin-top: 20px;">
                                             <img src="qr_code.png" alt="QR Code">
                                         </div> -->
-                                        <p style="margin-top: 30px; font-weight: bold; text-decoration: underline;">{{ $admin->nama_user }}</p>
+                                        <p style="margin-top: 60px; font-weight: bold; text-decoration: underline;">{{ $admin->nama_user }}</p>
                                         <p style="font-weight: bold;"> {{ $div_admin->nama_divisi }}</p>
                                     </div>
                                 </div>

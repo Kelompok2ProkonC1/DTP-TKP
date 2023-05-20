@@ -54,9 +54,10 @@
 </head>
 <body>
     <div class="container">
-        <!-- <div class="logo">
-            <img src="{{ asset('logo/logo_divisi.png') }}" alt="Logo Perusahaan" style="width: 180px;">
-        </div> -->
+        <div class="logo">
+            <img src="{{ $image}}" alt="Logo Perusahaan" style="width: 180px;">
+        </div>
+        <div style="clear: both;"></div>
         <div class="title">
             Surat Persetujuan Pelatihan
             </div>
@@ -76,7 +77,7 @@
             <tr>
                 <td>Tanggal Pelatihan</td>
                 <td>:</td>
-                <td>{{ date("d-m-Y", strtotime($pelatihan->tanggal_dimulai)) }} - {{ date("d-m-Y", strtotime($pelatihan->tanggal_berakhir)) }}</td>
+                <td>{{ date("d-m-Y", strtotime($pelatihan->tanggal_dimulai)) }} s/d {{ date("d-m-Y", strtotime($pelatihan->tanggal_berakhir)) }}</td>
             </tr>
             <tr>
                 <td>Tempat Pelatihan</td>

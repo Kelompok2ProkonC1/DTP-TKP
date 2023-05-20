@@ -17,6 +17,8 @@ class SuratPelatihan extends Component
    
      public function render(Request $request)
     {
+       
+       
         $pengajuan = Pengajuan::find($request->input('id'));
         $karyawan = User::find($pengajuan->id_user);
         $admin = User::find($pengajuan->id_admin);
@@ -32,6 +34,12 @@ class SuratPelatihan extends Component
 
      public function downloadPDF(Request $request)
     {
+        $path = public_path(). '/logo_divisi.png';
+        $type = pathinfo($path, PATHINFO_EXTENSION);
+        $data = file_get_contents($path);
+        $image = 'data:image/'.$type.';base64,'.base64_encode($data);
+
+        
         $pengajuan = Pengajuan::find($request->input('id'));
         $karyawan = User::find($pengajuan->id_user);
         $admin = User::find($pengajuan->id_admin);
@@ -41,11 +49,12 @@ class SuratPelatihan extends Component
         $pelatihan = Pelatihan::find($pengajuan->id_pelatihan);
         $kategori = Category::find($pelatihan->id_kategori);
     
-        $pdf = PDF::loadView('livewire.pengajuan-pelatihan.download-pdf', compact('div_admin', 'div_karyawan','pengajuan','karyawan','admin', 'karyawan','surat', 'pelatihan', 'kategori'))
+        $pdf = PDF::loadView('livewire.pengajuan-pelatihan.download-pdf', compact('image', 'div_admin', 'div_karyawan','pengajuan','karyawan','admin', 'karyawan','surat', 'pelatihan', 'kategori'))
                     ->setPaper('a4');
      
         return $pdf->download('Surat Persetujuan Pelatihan.pdf');
     }
 
 }
+
 ?>
