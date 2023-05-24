@@ -29,6 +29,8 @@ use App\Http\Livewire\PengajuanPelatihan\InfoPengajuan;
 use App\Http\Livewire\PengajuanPelatihan\History;
 use App\Http\Livewire\PengajuanPelatihan\PengajuanPelatihan;
 use App\Http\Livewire\PengajuanPelatihan\SuratPelatihan;
+use App\Http\Livewire\PengajuanPelatihan\EditPengajuan;
+use App\Http\Livewire\PengajuanPelatihan\TolakPengajuan;
 use App\Http\Livewire\VirtualReality;
 use Illuminate\Http\Request;
 
@@ -75,6 +77,7 @@ Route::middleware(['auth'])->group(function () {
 Route::middleware(['auth', 'karyawan'])->group(function () {
     // Pengajuan pelatihan
     Route::get('/pengajuan-pelatihan', PengajuanPelatihan::class)->name('pengajuan-pelatihan');
+    Route::post('/edit-pengajuan', EditPengajuan::class)->name('edit-pengajuan');
 });
 
 Route::middleware(['auth', 'admin'])->group(function () {
@@ -89,12 +92,9 @@ Route::middleware(['auth', 'admin'])->group(function () {
     // Manage user
     Route::get('/user-management', UserManagement::class)->name('user-management');
     Route::get('/add-user', AddUser::class)->name('add-user');
-    // Route::get('/user-management/delete-user/{id}', [UserController::class, 'deleteUser'])->name('delete-user');
     Route::post('/user-management/delete-user', [UserManagement::class, 'delete_user'])->name('delete-user');
     Route::post('/update-user', UpdateUser::class)->name('update-user');
     Route::post('/updating-user', [UpdateUser::class, 'update_user'])->name('updating-user');
-    // Route::get('/user-management/update-user/{id}', [UserController::class, 'showUpdateUser'])->name('show-update-user');
-    // Route::post('/user-management/updating-user', [UserController::class, 'updateUser'])->name('update-user');
 
     // Manage category
     Route::get('/category-management', CategoryManagement::class)->name('category-management');
@@ -113,5 +113,5 @@ Route::middleware(['auth', 'admin'])->group(function () {
     // Submission
     Route::get('/verifikasi', Verifikasi::class)->name('verifikasi');
     Route::post('/approve-pengajuan', [Verifikasi::class, 'aprrove_pengajuan'])->name('approve-pengajuan');
-    Route::post('/disapprove-pengajuan', [Verifikasi::class, 'disaprrove_pengajuan'])->name('disapprove-pengajuan');
+    Route::post('/tolak-pengajuan', TolakPengajuan::class)->name('tolak-pengajuan');
 });

@@ -26,21 +26,6 @@ class Verifikasi extends Component
         return redirect()->route('verifikasi');
     }
 
-    // Disapprove specific pengajuan pelatihan
-    public function disaprrove_pengajuan(Request $request)
-    {
-        // delete data with the specified ID
-        $pengajuan = Pengajuan::find($request->input('id'));
-        $pengajuan->status_pengajuan = 'Ditolak';
-        $pengajuan->tanggal_verifikasi = now();
-        $pengajuan->save();
-
-        session()->flash('status', 'Pengajuan pelatihan berhasil ditolak!');
-
-        // redirect back to the previous page
-        return redirect()->route('verifikasi');
-    }
-
     public function render(Request $request)
     {
         $users = User::all();

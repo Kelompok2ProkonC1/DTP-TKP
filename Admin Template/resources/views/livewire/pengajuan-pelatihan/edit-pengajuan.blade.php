@@ -26,8 +26,14 @@
                     </div>
 
                     @endif
-                    <form wire:submit.prevent="add_pengajuan_pelatihan" enctype="multipart/form-data">
+                    <form wire:submit.prevent="edit_pengajuan_pelatihan" enctype="multipart/form-data">
                         @csrf
+                        <div class="-mx-6 px-3">
+                            <h6 class="font-bold leading-tight uppercase text-size-xs text-slate-500">Deskripsi Revisi</h6>
+                            <div class="mb-4">
+                                <textarea rows="4" class="text-size-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 focus:outline-none" style="cursor: context-menu;" readonly>{{$pengajuan->deskripsi_revisi}}</textarea>
+                            </div>
+                        </div>
                         <div class="flex flex-wrap -mx-6">
                             <div class="max-w-full px-3 w-1/2 lg:flex-none">
                                 <div class="flex flex-col h-full">
@@ -52,7 +58,11 @@
                                         <select wire:model.lazy="id_kategori" type="text" class="text-size-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="Pilih kategori pelatihan..." name="id_kategori" aria-label="id_kategori" aria-describedby="id_kategori-addon" required>
                                             <option disabled selected value="0">Pilih kategori pelatihan...</option>
                                             @foreach($kategori as $k)
-                                            <option value="{{ $k->id }}">{{ $k->nama_kategori }}</option>
+                                            <?php if ($k->id == $pelatihan->id_kategori) { ?>
+                                                <option selected value="{{ $k->id }}">{{ $k->nama_kategori }}</option>
+                                            <?php } else { ?>
+                                                <option value="{{ $k->id }}">{{ $k->nama_kategori }}</option>
+                                            <?php } ?>
                                             @endforeach
                                         </select>
                                     </div>
@@ -102,7 +112,7 @@
                                     </div>
                                     <h6 class="font-bold leading-tight uppercase text-size-xs text-slate-500">Gambar Pelatihan</h6>
                                     <div class="mb-4">
-                                        <input wire:model.lazy="gambar_pelatihan" type="file" class="text-size-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow">
+                                        <input wire:model.lazy="gambar_pelatihan" id="fileInput" type="file" class="text-size-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" name="gambarrr">
                                     </div>
                                 </div>
                             </div>
@@ -116,7 +126,7 @@
                             </div>
                         </div>
                         <div class="flow-root">
-                            <button type="submit" class="float-right inline-block mr-6 px-6 py-3 mt-3 mb-2 font-bold text-center text-white uppercase align-middle transition-all bg-transparent border-0 rounded-lg cursor-pointer active:opacity-85 hover:scale-102 hover:shadow-soft-xs leading-pro text-size-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 bg-gradient-dark-gray hover:border-slate-700 hover:bg-slate-700 hover:text-white" onclick="return confirm('Apakah Anda yakin ingin mengajukan pelatihan ini?')">a j u k a n</button>
+                            <button type="submit" class="float-right inline-block mr-6 px-6 py-3 mt-3 mb-2 font-bold text-center text-white uppercase align-middle transition-all bg-transparent border-0 rounded-lg cursor-pointer active:opacity-85 hover:scale-102 hover:shadow-soft-xs leading-pro text-size-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 bg-gradient-dark-gray hover:border-slate-700 hover:bg-slate-700 hover:text-white" onclick="return confirm('Apakah Anda yakin ingin mengajukan pelatihan ini?')" wire:click="edit_pengajuan_pelatihan">ajukan revisi</button>
                         </div>
                     </form>
                 </div>

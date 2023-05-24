@@ -3,6 +3,8 @@
 namespace App\Http\Livewire\PengajuanPelatihan;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Livewire\WithFileUploads;
 use Livewire\Component;
 use App\Models\User;
 use App\Models\Pengajuan;
@@ -12,6 +14,8 @@ use App\Models\Divisi;
 
 class PengajuanPelatihan extends Component
 {
+    use WithFileUploads;
+
     public $judul_pelatihan = '';
     public $id_kategori = 0;
     public $deskripsi_pelatihan = '';
@@ -21,7 +25,7 @@ class PengajuanPelatihan extends Component
     public $tempat_pelatihan = '';
     public $bersetifikat = '';
     public $scope_pelatihan = '';
-
+    public $gambar_pelatihan;
 
     protected $rules = [
         'judul_pelatihan' => 'required',
@@ -33,12 +37,20 @@ class PengajuanPelatihan extends Component
         'tempat_pelatihan' => 'required',
         'bersetifikat' => 'required',
         'scope_pelatihan' => 'required',
+        'gambar_pelatihan' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
     ];
 
-    public function add_pengajuan_pelatihan()
+    public function add_pengajuan_pelatihan(Request $request)
     {
         // Validate the rules above.
         $this->validate();
+
+        // Generate unique file name
+        $fileName = time() . '.' . $this->gambar_pelatihan->getClientOriginalExtension();
+        
+        // Move file
+        $this->gambar_pelatihan->storeAs('public/images', $fileName);
+
         // Save into the database.
         Pelatihan::create([
             'judul_pelatihan' => $this->judul_pelatihan,
@@ -50,7 +62,7 @@ class PengajuanPelatihan extends Component
             'tempat_pelatihan' => $this->tempat_pelatihan,
             'bersetifikat' => $this->bersetifikat,
             'scope_pelatihan' => $this->scope_pelatihan,
-            'gambar_pelatihan' => "X",
+            'gambar_pelatihan' => $fileName,
         ]);
 
         $pelatihan = Pelatihan::latest()->first();
@@ -60,7 +72,6 @@ class PengajuanPelatihan extends Component
             'id_pelatihan' => $pelatihan->id,
             'id_user' => auth()->user()->id,
             'status_pengajuan' => "Belum",
-            'dokumen_pengajuan' => "X",
         ]);
 
         session()->flash('status', 'Pelatihan berhasil diajukan!');

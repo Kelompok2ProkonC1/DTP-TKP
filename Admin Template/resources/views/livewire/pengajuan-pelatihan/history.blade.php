@@ -4,9 +4,14 @@
         <div class="relative flex flex-col min-w-0 mb-6 break-words bg-white border-0 border-transparent border-solid shadow-soft-xl rounded-2xl bg-clip-border">
             <div class="flex items-center justify-between p-6 pb-0 mb-0 bg-white border-b-0 border-b-solid rounded-t-2xl border-b-transparent">
                 <div class="pb-0 mb-0 bg-white border-b-0 border-b-solid rounded-t-2xl border-b-transparent">
-                    <h5><b>Verifikasi Pengajuan Pelatihan</b></h5>
-                    <p>Here you can approve or diassprove 'Pengajuan Pelatihan' from karyawan.</p>
+                    <h5><b>History Pengajuan Pelatihan</b></h5>
+                    <p>Here you can see history of 'Pengajuan Pelatihan' from karyawan.</p>
                 </div>
+                @if(auth()->user()->role_user !== 'Admin')
+                <div class="my-auto ml-auto pr-6">
+                    <a class="float-right inline-block px-6 py-3 mb-2 font-bold text-center text-white uppercase align-middle transition-all bg-transparent border-0 rounded-lg cursor-pointer shadow-soft-md bg-150 bg-x-25 leading-pro text-size-xs bg-gradient-fuchsia hover:shadow-soft-2xl hover:scale-102" href="{{ url('/pengajuan-pelatihan') }}">+&nbsp;Add Pengajuan</a>
+                </div>
+                @endif
             </div>
 
             @if (Session::has('status'))
@@ -44,18 +49,15 @@
                         <tbody>
                             <?php $number = $range * 10 - 10 + 1; ?>
                             @foreach ($pengajuan as $index => $p)
-                            @if($index >= $range * 10 - 10 && $index < $range * 10)
-                            <tr>
+                            @if($index >= $range * 10 - 10 && $index < $range * 10) <tr>
                                 <td class="pl-6 align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
                                     <p class="mb-0 font-semibold leading-tight text-size-xs">{{ $number }}</p>
                                 </td>
 
                                 <td class="p-2 align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
                                     <p class="mb-0 font-semibold leading-tight text-size-xs">
-                                        <?php foreach($users as $user)
-                                        {
-                                            if($p->id_user == $user->id)
-                                            {
+                                        <?php foreach ($users as $user) {
+                                            if ($p->id_user == $user->id) {
                                                 $id_div_user = $user->id_divisi;
                                                 echo $user->nama_user;
                                                 break;
@@ -65,10 +67,8 @@
                                 </td>
                                 <td class="p-2 align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
                                     <p class="mb-0 font-semibold leading-tight text-size-xs">
-                                        <?php foreach($divisi as $d)
-                                        {
-                                            if($id_div_user == $d->id)
-                                            {
+                                        <?php foreach ($divisi as $d) {
+                                            if ($id_div_user == $d->id) {
                                                 echo $d->nama_divisi;
                                                 break;
                                             }
@@ -78,10 +78,8 @@
 
                                 <td class="p-2 text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
                                     <p class="mb-0 font-semibold leading-tight text-size-xs">
-                                        <?php foreach($pelatihan as $pp)
-                                        {
-                                            if($pp->id == $p->id_pelatihan)
-                                            {
+                                        <?php foreach ($pelatihan as $pp) {
+                                            if ($pp->id == $p->id_pelatihan) {
                                                 $id_kategori_pelatihan = $pp->id_kategori;
                                                 echo $pp->judul_pelatihan;
                                                 break;
@@ -92,10 +90,8 @@
 
                                 <td class="p-2 text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
                                     <p class="mb-0 font-semibold leading-tight text-size-xs">
-                                        <?php foreach($kategori as $k)
-                                        {
-                                            if($k->id == $id_kategori_pelatihan)
-                                            {
+                                        <?php foreach ($kategori as $k) {
+                                            if ($k->id == $id_kategori_pelatihan) {
                                                 echo $k->nama_kategori;
                                                 break;
                                             }
@@ -109,24 +105,36 @@
 
                                 <td class="p-2 text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
                                     <p class="mb-0 font-semibold leading-tight text-base">
-                                    <form action="{{ route('info-pengajuan') }}" method="POST"  style="display: inline;" class="ml-3">
+                                    @if($p->status_pengajuan == 'Diterima' || $p->status_pengajuan == 'Belum' || ($p->status_pengajuan == 'Ditolak' && auth()->user()->role_user == 'Admin'))
+                                    <form action="{{ route('info-pengajuan') }}" method="POST" style="display: inline;" class="ml-3">
                                         @csrf
                                         <input type="hidden" name="id" value="{{ $p->id }}" class="mr-3">
                                         <!-- Add other form fields here -->
                                         <button type="submit"><i class="fas fa-search" aria-hidden="true"></i></button>
                                     </form>
-                                    <form action="{{ route('surat') }}" method="POST"  style="display: inline;" class="ml-3">
+                                    @endif
+                                    @if($p->status_pengajuan == 'Diterima')
+                                    <form action="{{ route('surat') }}" method="POST" style="display: inline;" class="ml-3">
                                         @csrf
                                         <input type="hidden" name="id" value="{{ $p->id }}" class="ml-3">
                                         <!-- Add other form fields here -->
-                                        <button type="submit"  class="fas fa-file" aria-hidden="true"></i></button>
+                                        <button type="submit" class="fas fa-file" aria-hidden="true"></i></button>
                                     </form>
+                                    @endif
+                                    @if($p->status_pengajuan == 'Ditolak' && auth()->user()->role_user != 'Admin')
+                                    <form action="{{ route('edit-pengajuan') }}" method="POST" style="display: inline;" class="ml-3">
+                                        @csrf
+                                        <input type="hidden" name="id" value="{{ $p->id }}" class="ml-3">
+                                        <!-- Add other form fields here -->
+                                        <button type="submit" class="fas fa-edit" aria-hidden="true"></i></button>
+                                    </form>
+                                    @endif
                                     </p>
                                 </td>
-                            </tr>
-                            <?php $number += 1; ?>
-                            @endif
-                            @endforeach
+                                </tr>
+                                <?php $number += 1; ?>
+                                @endif
+                                @endforeach
                         </tbody>
                     </table>
                 </div>
@@ -134,14 +142,18 @@
             <div class="flex justify-center">
                 <form action="{{ url('history') }}">
                     <input type="hidden" name="range" value="{{ $range - 1 }}">
-                    <button {{ $range != 1 ? '' : 'disabled' }}><h4><i class="fas fa-angle-left"></i></h4></button>
+                    <button {{ $range != 1 ? '' : 'disabled' }}>
+                        <h4><i class="fas fa-angle-left"></i></h4>
+                    </button>
                 </form>
                 <span style="pointer-events: none;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
                 <h6 style="pointer-events: none;">{{ $range }}</h6>
                 <span style="pointer-events: none;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
                 <form action="{{ url('history') }}">
                     <input type="hidden" name="range" value="{{ $range + 1 }}">
-                    <button {{ count($pengajuan) > $range * 10 ? '' : 'disabled' }}><h4><i class="fas fa-angle-right"></i></h4></button>
+                    <button {{ count($pengajuan) > $range * 10 ? '' : 'disabled' }}>
+                        <h4><i class="fas fa-angle-right"></i></h4>
+                    </button>
                 </form>
             </div>
         </div>
@@ -152,5 +164,5 @@
             document.getElementById("alert").style.display = "none";
         }
     </script>
-    
+
 </div>

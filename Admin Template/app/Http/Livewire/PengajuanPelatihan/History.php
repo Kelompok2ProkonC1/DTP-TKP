@@ -21,7 +21,7 @@ class History extends Component
         }
         else if(auth()->user()->role_user === 'Karyawan')
         {
-            $pengajuan = Pengajuan::where('status_pengajuan', '!=', 'Belum')->where('id_user', auth()->user()->id)->get();
+            $pengajuan = Pengajuan::where('id_user', auth()->user()->id)->get();
         }
         $pelatihan = Pelatihan::all();
         $kategori = Category::all();

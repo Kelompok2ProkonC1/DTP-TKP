@@ -46,7 +46,7 @@
                     <div class="-mx-6 px-3">
                         <h6 class="font-bold leading-tight uppercase text-size-xs text-slate-500">Deskripsi Pelatihan</h6>
                         <div class="mb-4">
-                            <textarea rows="4" class="text-size-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 focus:outline-none" style="cursor: auto;" readonly >{{ $pelatihan->deskripsi_pelatihan }}</textarea>
+                            <textarea rows="4" class="text-size-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 focus:outline-none" style="cursor: auto;" readonly>{{ $pelatihan->deskripsi_pelatihan }}</textarea>
                         </div>
                     </div>
                     <div class="flex flex-wrap -mx-6">
@@ -98,6 +98,20 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="max-w-full px-3 w-1/2 lg:flex-none">
+                            <div class="flex flex-col h-full">
+                                <h6 class="font-bold leading-tight uppercase text-size-xs text-slate-500">Gambar Pelatihan</h6>
+                                <div class="mb-4">
+                                    <!-- <div class="border border-solid py-2 px-3 bg-clip-padding bg-white border-gray-300 rounded-lg"> -->
+                                    <div class="text-size-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 focus:outline-none">
+                                        <a href="{{ asset('storage/images/' . $pelatihan->gambar_pelatihan) }}" target="_blank" class="text-size-sm">
+                                            {{$pelatihan->gambar_pelatihan}}
+                                        </a>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         @if(!empty($pengajuan->tanggal_verifikasi))
                         <div class="max-w-full px-3 w-1/2 lg:flex-none">
                             <div class="flex flex-col h-full">
@@ -110,7 +124,14 @@
                         @endif
                     </div>
                     <div class="flow-root">
-                        <button type="submit" class="float-right inline-block mr-6 px-6 py-3 mt-3 mb-2 font-bold text-center text-white uppercase align-middle transition-all bg-transparent border-0 rounded-lg cursor-pointer active:opacity-85 hover:scale-102 hover:shadow-soft-xs leading-pro text-size-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 bg-gradient-dark-gray hover:border-slate-700 hover:bg-slate-700 hover:text-white" onclick="return confirm('Apakah Anda yakin ingin mendownload file pengajuan pelatihan ini?')">Download File</button>
+
+                        <button type="button" class="float-right inline-block mr-6 px-6 py-3 mt-3 mb-2 font-bold text-center text-white uppercase align-middle transition-all bg-transparent border-0 rounded-lg cursor-pointer active:opacity-85 hover:scale-102 hover:shadow-soft-xs leading-pro text-size-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 bg-gradient-dark-gray hover:border-slate-700 hover:bg-slate-700 hover:text-white">Download File</button>
+
+                        <!-- <div id="myDiv" style="display: none;" class="text-center">
+                            <span style="cursor: pointer;" onclick="imageClose()">Close</span>
+                            <img src="{{ asset('storage/images/' . $pelatihan->gambar_pelatihan) }}" alt="Uploaded Image">
+                        </div> -->
+
                     </div>
                 </div>
             </div>
@@ -120,6 +141,16 @@
     <script>
         function alertClose() {
             document.getElementById("alert").style.display = "none";
+        }
+
+        function imageOpen() {
+            var div = document.getElementById('myDiv');
+            div.style.display = div.style.display === 'none' ? 'block' : 'none';
+        }
+
+        function imageClose() {
+            var div = document.getElementById('myDiv');
+            div.style.display = 'none';
         }
     </script>
 

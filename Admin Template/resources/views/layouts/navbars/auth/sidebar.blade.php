@@ -74,29 +74,6 @@
           </a>
         </li>
 
-        <?php if (auth()->user()->role_user === 'Karyawan' || auth()->user()->role_user === 'Super Admin') { ?>
-
-          <li class="w-full mt-4">
-            <h6 class="{{ (Request::is('rtl') ? 'pr-6 mr-2' : 'pl-6 ml-2') }} font-bold leading-tight uppercase text-size-xs opacity-60">
-              Pengajuan Pelatihan</h6>
-          </li>
-
-          <li class="mt-0.5 w-full">
-            <a class="py-2.7 text-size-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors
-              {{ (Request::is('pengajuan-pelatihan') ? 'shadow-soft-xl rounded-lg bg-white font-semibold text-slate-700' : '') }}" href="{{ url('pengajuan-pelatihan') }}">
-
-              <div class="{{ (Request::is('pengajuan-pelatihan') ? ' bg-gradient-fuchsia' : '') }} shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center stroke-0 text-center xl:p-2.5">
-
-                <i style="font-size: 1rem;" class="fas fa-lg fa-list-ul ps-2 pe-2 text-center text-dark {{ (Request::is('pengajuan-pelatihan') ? 'text-white' : 'text-dark') }} " aria-hidden="true"></i>
-
-              </div>
-              <span class="{{ (Request::is('rtl') ? 'mr-1' : 'ml-1') }} duration-300 opacity-100 pointer-events-none ease-soft">Pengajuan</span>
-            </a>
-          </li>
-
-        <?php } ?>
-
-
         <?php if (auth()->user()->role_user === 'Admin' || auth()->user()->role_user === 'Super Admin') { ?>
 
           <li class="w-full mt-4">
@@ -153,11 +130,11 @@
 
           <li class="mt-0.5 w-full">
             <a class="py-2.7 text-size-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors
-              {{ (Request::is('verifikasi') || (collect(explode('/', url()->previous()))->last() == 'verifikasi' && Request::is('info-pengajuan')) ? 'shadow-soft-xl rounded-lg bg-white font-semibold text-slate-700' : '') }}" href="{{ url('verifikasi') }}">
+              {{ (Request::is('verifikasi', 'tolak-pengajuan') || (collect(explode('/', url()->previous()))->last() == 'verifikasi' && Request::is('info-pengajuan')) ? 'shadow-soft-xl rounded-lg bg-white font-semibold text-slate-700' : '') }}" href="{{ url('verifikasi') }}">
 
-              <div class="{{ (Request::is('verifikasi')  || (collect(explode('/', url()->previous()))->last() == 'verifikasi' && Request::is('info-pengajuan')) ? ' bg-gradient-fuchsia' : '') }} shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center stroke-0 text-center xl:p-2.5">
+              <div class="{{ (Request::is('verifikasi', 'tolak-pengajuan')  || (collect(explode('/', url()->previous()))->last() == 'verifikasi' && Request::is('info-pengajuan')) ? ' bg-gradient-fuchsia' : '') }} shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center stroke-0 text-center xl:p-2.5">
 
-                <i style="font-size: 1rem;" class="fas fa-lg fa-list-ul ps-2 pe-2 text-center text-dark {{ (Request::is('verifikasi')  || (collect(explode('/', url()->previous()))->last() == 'verifikasi' && Request::is('info-pengajuan')) ? 'text-white' : 'text-dark') }} " aria-hidden="true"></i>
+                <i style="font-size: 1rem;" class="fas fa-lg fa-list-ul ps-2 pe-2 text-center text-dark {{ (Request::is('verifikasi', 'tolak-pengajuan')  || (collect(explode('/', url()->previous()))->last() == 'verifikasi' && Request::is('info-pengajuan')) ? 'text-white' : 'text-dark') }} " aria-hidden="true"></i>
 
               </div>
               <span class="{{ (Request::is('rtl') ? 'mr-1' : 'ml-1') }} duration-300 opacity-100 pointer-events-none ease-soft">Verifikasi</span>
@@ -168,14 +145,19 @@
 
         <li class="mt-0.5 w-full">
           <a class="py-2.7 text-size-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors
-              {{ (Request::is('history') || (collect(explode('/', url()->previous()))->last() == 'history' && Request::is('info-pengajuan')) ? 'shadow-soft-xl rounded-lg bg-white font-semibold text-slate-700' : '') }}" href="{{ url('history') }}">
+              {{ (Request::is('history', 'edit-pengajuan', 'pengajuan-pelatihan') || (collect(explode('/', url()->previous()))->last() == 'history' && Request::is('info-pengajuan')) ? 'shadow-soft-xl rounded-lg bg-white font-semibold text-slate-700' : '') }}" href="{{ url('history') }}">
 
-            <div class="{{ (Request::is('history') || (collect(explode('/', url()->previous()))->last() == 'history' && Request::is('info-pengajuan')) ? ' bg-gradient-fuchsia' : '') }} shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center stroke-0 text-center xl:p-2.5">
+            <div class="{{ (Request::is('history', 'edit-pengajuan', 'pengajuan-pelatihan') || (collect(explode('/', url()->previous()))->last() == 'history' && Request::is('info-pengajuan')) ? ' bg-gradient-fuchsia' : '') }} shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center stroke-0 text-center xl:p-2.5">
 
-              <i style="font-size: 1rem;" class="fas fa-lg fa-list-ul ps-2 pe-2 text-center text-dark {{ (Request::is('history') || (collect(explode('/', url()->previous()))->last() == 'history' && Request::is('info-pengajuan')) ? 'text-white' : 'text-dark') }} " aria-hidden="true"></i>
+              <i style="font-size: 1rem;" class="fas fa-lg fa-list-ul ps-2 pe-2 text-center text-dark {{ (Request::is('history', 'edit-pengajuan', 'pengajuan-pelatihan') || (collect(explode('/', url()->previous()))->last() == 'history' && Request::is('info-pengajuan')) ? 'text-white' : 'text-dark') }} " aria-hidden="true"></i>
 
             </div>
+            @if(auth()->user()->role_user !== 'Admin')
+            <span class="{{ (Request::is('rtl') ? 'mr-1' : 'ml-1') }} duration-300 opacity-100 pointer-events-none ease-soft">Pengajuan Pelatihan</span>
+            @endif
+            @if(auth()->user()->role_user === 'Admin')
             <span class="{{ (Request::is('rtl') ? 'mr-1' : 'ml-1') }} duration-300 opacity-100 pointer-events-none ease-soft">History</span>
+            @endif
           </a>
         </li>
 
