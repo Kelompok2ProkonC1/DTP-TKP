@@ -104,7 +104,7 @@
                                 <div class="mb-4">
                                     <!-- <div class="border border-solid py-2 px-3 bg-clip-padding bg-white border-gray-300 rounded-lg"> -->
                                     <div class="text-size-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 focus:outline-none">
-                                        <a href="{{ asset('storage/images/' . $pelatihan->gambar_pelatihan) }}" target="_blank" class="text-size-sm">
+                                        <a href="{{ asset('storage/images/' . $pelatihan->gambar_pelatihan) }}" target="_blank" class="text-size-sm font-bold">
                                             {{$pelatihan->gambar_pelatihan}}
                                         </a>
 
@@ -123,16 +123,23 @@
                         </div>
                         @endif
                     </div>
-                    <div class="flow-root">
+                    <?php if ($pengajuan->status_pengajuan == 'Diterima') { ?>
+                        <div class="flow-root">
 
-                        <button type="button" class="float-right inline-block mr-6 px-6 py-3 mt-3 mb-2 font-bold text-center text-white uppercase align-middle transition-all bg-transparent border-0 rounded-lg cursor-pointer active:opacity-85 hover:scale-102 hover:shadow-soft-xs leading-pro text-size-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 bg-gradient-dark-gray hover:border-slate-700 hover:bg-slate-700 hover:text-white">Download File</button>
+                            <form action="{{ route('surat') }}" method="POST">
+                                @csrf
+                                <input type="hidden" name="id" value="{{ $pengajuan->id }}" class="ml-3">
+                                <!-- Add other form fields here -->
+                                <button type="submit" class="float-right inline-block mr-6 px-6 py-3 mt-3 mb-2 font-bold text-center text-white uppercase align-middle transition-all bg-transparent border-0 rounded-lg cursor-pointer active:opacity-85 hover:scale-102 hover:shadow-soft-xs leading-pro text-size-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 bg-gradient-dark-gray hover:border-slate-700 hover:bg-slate-700 hover:text-white">Download File</button>
+                            </form>
 
-                        <!-- <div id="myDiv" style="display: none;" class="text-center">
+                            <!-- <div id="myDiv" style="display: none;" class="text-center">
                             <span style="cursor: pointer;" onclick="imageClose()">Close</span>
                             <img src="{{ asset('storage/images/' . $pelatihan->gambar_pelatihan) }}" alt="Uploaded Image">
                         </div> -->
 
-                    </div>
+                        </div>
+                    <?php } ?>
                 </div>
             </div>
         </div>

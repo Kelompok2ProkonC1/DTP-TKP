@@ -112,7 +112,13 @@
                                     </div>
                                     <h6 class="font-bold leading-tight uppercase text-size-xs text-slate-500">Gambar Pelatihan</h6>
                                     <div class="mb-4">
-                                        <input wire:model.lazy="gambar_pelatihan" id="fileInput" type="file" class="text-size-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" name="gambarrr">
+                                        <div class="text-size-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow">
+                                            
+                                            <input wire:model.lazy="gambar_pelatihan" id="fileInput" type="file" class="text-size-sm" name="gambarrr">
+                                            <a href="{{ asset('storage/images/' . $pelatihan->gambar_pelatihan) }}" target="_blank" class="text-size-sm font-bold" id="gambarSebelum">
+                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;({{$pelatihan->gambar_pelatihan}})
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
