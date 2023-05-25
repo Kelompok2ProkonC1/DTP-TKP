@@ -1,8 +1,8 @@
 <div>
     <!-- row 1 -->
-    <div class="flex flex-wrap -mx-3">
-        <!-- card1 -->
-        <div class="w-full max-w-full px-3 mb-6 sm:w-1/2 sm:flex-none xl:mb-0 xl:w-1/4">
+    <!-- <div class="flex flex-wrap -mx-3"> -->
+    <!-- card1 -->
+    <!-- <div class="w-full max-w-full px-3 mb-6 sm:w-1/2 sm:flex-none xl:mb-0 xl:w-1/4">
             <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-xl rounded-2xl bg-clip-border">
                 <div class="flex-auto p-4">
                     <div class="flex flex-row -mx-3">
@@ -23,10 +23,10 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
 
-        <!-- card2 -->
-        <div class="w-full max-w-full px-3 mb-6 sm:w-1/2 sm:flex-none xl:mb-0 xl:w-1/4">
+    <!-- card2 -->
+    <!-- <div class="w-full max-w-full px-3 mb-6 sm:w-1/2 sm:flex-none xl:mb-0 xl:w-1/4">
             <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-xl rounded-2xl bg-clip-border">
                 <div class="flex-auto p-4">
                     <div class="flex flex-row -mx-3">
@@ -48,10 +48,10 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
 
-        <!-- card3 -->
-        <div class="w-full max-w-full px-3 mb-6 sm:w-1/2 sm:flex-none xl:mb-0 xl:w-1/4">
+    <!-- card3 -->
+    <!-- <div class="w-full max-w-full px-3 mb-6 sm:w-1/2 sm:flex-none xl:mb-0 xl:w-1/4">
             <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-xl rounded-2xl bg-clip-border">
                 <div class="flex-auto p-4">
                     <div class="flex flex-row -mx-3">
@@ -72,10 +72,10 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
 
-        <!-- card4 -->
-        <div class="w-full max-w-full px-3 sm:w-1/2 sm:flex-none xl:w-1/4">
+    <!-- card4 -->
+    <!-- <div class="w-full max-w-full px-3 sm:w-1/2 sm:flex-none xl:w-1/4">
             <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-xl rounded-2xl bg-clip-border">
                 <div class="flex-auto p-4">
                     <div class="flex flex-row -mx-3">
@@ -97,11 +97,20 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 
-    <!-- cards row 2 -->
-    <div class="flex flex-wrap mt-6 -mx-3">
-        <div class="w-full px-3 mb-6 lg:mb-0 lg:w-7/12 lg:flex-none">
+    <div class="flex flex-wrap -mx-3">
+
+        <div class="flex-none w-full max-w-full px-3">
+            <div class="relative flex flex-col min-w-0 mb-6 break-words bg-white border-0 border-transparent border-solid shadow-soft-xl rounded-2xl bg-clip-border">
+
+                <div class="text-center mt-4">
+                    <h3 class="dark:text-white"><b>DASHBOARD</b></h3>
+                </div>
+
+                <!-- cards row 2 -->
+                <div class="flex flex-wrap mx-4 mb-6">
+                    <!-- <div class="w-full px-3 mb-6 lg:mb-0 lg:w-4/12 lg:flex-none">
             <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-xl rounded-2xl bg-clip-border">
                 <div class="flex-auto p-4">
                     <div class="flex flex-wrap -mx-3">
@@ -128,25 +137,102 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="w-full max-w-full px-3 lg:w-5/12 lg:flex-none">
-            <div class="border-black/12.5 shadow-soft-xl relative flex h-full min-w-0 flex-col break-words rounded-2xl border-0 border-solid bg-white bg-clip-border p-4">
-                <div class="relative h-full overflow-hidden bg-cover rounded-xl" style="background-image: url('../assets/img/ivancik.jpg')">
-                    <span class="absolute top-0 left-0 w-full h-full bg-center bg-cover bg-gradient-dark-gray opacity-80"></span>
-                    <div class="relative z-10 flex flex-col flex-auto h-full p-4">
-                        <h5 class="pt-2 mb-6 font-bold text-white">Work with the rockets</h5>
-                        <p class="text-white">Wealth creation is an evolutionarily recent positive-sum game. It is all about who take the opportunity first.</p>
-                        <a class="mt-auto mb-0 font-semibold leading-normal text-white group text-size-sm" href="javascript:;"> Read More <i class="fas fa-arrow-right ease-bounce text-size-sm group-hover:translate-x-1.25 ml-1 leading-normal transition-all duration-200"></i>
-                        </a>
+        </div> -->
+                    <div class="w-full max-w-full px-3 lg:w-4/12 lg:flex-none">
+
+                        <div class="relative h-full overflow-hidden bg-cover rounded-xl" style="background-image: url('../assets/img/bg-dashboard')">
+                            <span class="absolute top-0 left-0 w-full h-full bg-center bg-cover bg-gradient-dark-gray opacity-80"></span>
+                            <div class="relative z-10 flex flex-col flex-auto h-full p-4">
+                                <h5 class="text-center pt-2 mb-6 font-bold text-white">Pengajuan Pelatihan<br>"Belum diverifikasi"</h5>
+                                <h1 class="text-center pt-2 mb-6 font-bold text-white">{{$belum}}</h1>
+                                <?php if (auth()->user()->role_user == 'Admin' || auth()->user()->role_user == 'Super Admin') { ?>
+                                    <a class="mt-auto mb-0 font-semibold leading-normal text-white group text-size-sm" href="{{ url('/verifikasi') }}"> Verifikasi Pengajuan Pelatihan <i class="fas fa-arrow-right ease-bounce text-size-sm group-hover:translate-x-1.25 ml-1 leading-normal transition-all duration-200"></i>
+                                    <?php } else { ?>
+                                        <a class="mt-auto mb-0 font-semibold leading-normal text-white group text-size-sm" href="{{ url('/history') }}"> History Pengajuan Pelatihan <i class="fas fa-arrow-right ease-bounce text-size-sm group-hover:translate-x-1.25 ml-1 leading-normal transition-all duration-200"></i>
+                                        <?php } ?>
+                                        </a>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="w-full max-w-full px-3 lg:w-4/12 lg:flex-none">
+
+                        <div class="relative h-full overflow-hidden bg-cover rounded-xl" style="background-image: url('../assets/img/bg-dashboard')">
+                            <span class="absolute top-0 left-0 w-full h-full bg-center bg-cover bg-gradient-dark-gray opacity-80"></span>
+                            <div class="relative z-10 flex flex-col flex-auto h-full p-4">
+                                <h5 class="pt-2 mb-6 font-bold text-white text-center">Pengajuan Pelatihan<br>"Ditolak"</h5>
+                                <h1 class="pt-2 mb-6 font-bold text-white text-center">{{$ditolak}}</h1>
+                                <a class="mt-auto mb-0 font-semibold leading-normal text-white group text-size-sm" href="{{ url('/history') }}"> History Pengajuan Pelatihan <i class="fas fa-arrow-right ease-bounce text-size-sm group-hover:translate-x-1.25 ml-1 leading-normal transition-all duration-200"></i>
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="w-full max-w-full px-3 lg:w-4/12 lg:flex-none">
+
+                        <div class="relative h-full overflow-hidden bg-cover rounded-xl" style="background-image: url('../assets/img/bg-dashboard')">
+                            <span class="absolute top-0 left-0 w-full h-full bg-center bg-cover bg-gradient-dark-gray opacity-80"></span>
+                            <div class="relative z-10 flex flex-col flex-auto h-full p-4">
+                                <h5 class="pt-2 mb-6 font-bold text-white text-center">Pengajuan Pelatihan<br>"Diterima"</h5>
+                                <h1 class="pt-2 mb-6 font-bold text-white text-center">{{$diterima}}</h1>
+                                <a class="mt-auto mb-0 font-semibold leading-normal text-white group text-size-sm" href="{{ url('/history') }}"> History Pengajuan Pelatihan <i class="fas fa-arrow-right ease-bounce text-size-sm group-hover:translate-x-1.25 ml-1 leading-normal transition-all duration-200"></i>
+                                </a>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
+                <!-- User -->
+                @if(auth()->user()->role_user == 'Admin' || auth()->user()->role_user == 'Super Admin')
+                <div class="flex flex-wrap mx-4 mb-6">
+                    <div class="w-full max-w-full px-3 lg:w-4/12 lg:flex-none">
+
+                        <div class="relative h-full overflow-hidden bg-cover rounded-xl" style="background-image: url('../assets/img/bg-dashboard')">
+                            <span class="absolute top-0 left-0 w-full h-full bg-center bg-cover bg-gradient-dark-gray opacity-80"></span>
+                            <div class="relative z-10 flex flex-col flex-auto h-full p-4">
+                                <h5 class="text-center pt-2 mb-6 font-bold text-white">Total User</h5>
+                                <h1 class="text-center pt-2 mb-6 font-bold text-white">{{$user}}</h1>
+                                <a class="mt-auto mb-0 font-semibold leading-normal text-white group text-size-sm" href="{{ url('/user-management') }}"> User Management <i class="fas fa-arrow-right ease-bounce text-size-sm group-hover:translate-x-1.25 ml-1 leading-normal transition-all duration-200"></i>
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="w-full max-w-full px-3 lg:w-4/12 lg:flex-none">
+
+                        <div class="relative h-full overflow-hidden bg-cover rounded-xl" style="background-image: url('../assets/img/bg-dashboard')">
+                            <span class="absolute top-0 left-0 w-full h-full bg-center bg-cover bg-gradient-dark-gray opacity-80"></span>
+                            <div class="relative z-10 flex flex-col flex-auto h-full p-4">
+                                <h5 class="pt-2 mb-6 font-bold text-white text-center">Total Divisi</h5>
+                                <h1 class="pt-2 mb-6 font-bold text-white text-center">{{$divisi}}</h1>
+                                <a class="mt-auto mb-0 font-semibold leading-normal text-white group text-size-sm" href="{{ url('/division-management') }}"> Divisi Management <i class="fas fa-arrow-right ease-bounce text-size-sm group-hover:translate-x-1.25 ml-1 leading-normal transition-all duration-200"></i>
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="w-full max-w-full px-3 lg:w-4/12 lg:flex-none">
+
+                        <div class="relative h-full overflow-hidden bg-cover rounded-xl" style="background-image: url('../assets/img/bg-dashboard')">
+                            <span class="absolute top-0 left-0 w-full h-full bg-center bg-cover bg-gradient-dark-gray opacity-80"></span>
+                            <div class="relative z-10 flex flex-col flex-auto h-full p-4">
+                                <h5 class="pt-2 mb-6 font-bold text-white text-center">Total Kategori</h5>
+                                <h1 class="pt-2 mb-6 font-bold text-white text-center">{{$category}}</h1>
+                                <a class="mt-auto mb-0 font-semibold leading-normal text-white group text-size-sm" href="{{ url('/category-management') }}"> Kategori Management <i class="fas fa-arrow-right ease-bounce text-size-sm group-hover:translate-x-1.25 ml-1 leading-normal transition-all duration-200"></i>
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                @endif
             </div>
         </div>
     </div>
 
     <!-- cards row 3 -->
 
-    <div class="flex flex-wrap mt-6 -mx-3">
+    <!-- <div class="flex flex-wrap mt-6 -mx-3">
         <div class="w-full max-w-full px-3 mt-0 mb-6 lg:mb-0 lg:w-5/12 lg:flex-none">
             <div class="border-black/12.5 shadow-soft-xl relative z-20 flex min-w-0 flex-col break-words rounded-2xl border-0 border-solid bg-white bg-clip-border">
                 <div class="flex-auto p-4">
@@ -290,14 +376,14 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 
     <!-- cards row 4 -->
 
-    <div class="flex flex-wrap my-6 -mx-3">
-        <!-- card 1 -->
+    <!-- <div class="flex flex-wrap my-6 -mx-3"> -->
+    <!-- card 1 -->
 
-        <div class="w-full max-w-full px-3 mt-0 mb-6 md:mb-0 md:w-1/2 md:flex-none lg:w-2/3 lg:flex-none">
+    <!-- <div class="w-full max-w-full px-3 mt-0 mb-6 md:mb-0 md:w-1/2 md:flex-none lg:w-2/3 lg:flex-none">
             <div class="border-black/12.5 shadow-soft-xl relative flex min-w-0 flex-col break-words rounded-2xl border-0 border-solid bg-white bg-clip-border">
                 <div class="border-black/12.5 mb-0 rounded-t-2xl border-b-0 border-solid bg-white p-6 pb-0">
                     <div class="flex flex-wrap mt-0 -mx-3">
@@ -649,11 +735,11 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
 
-        <!-- card 2 -->
+    <!-- card 2 -->
 
-        <div class="w-full max-w-full px-3 md:w-1/2 md:flex-none lg:w-1/3 lg:flex-none">
+    <!-- <div class="w-full max-w-full px-3 md:w-1/2 md:flex-none lg:w-1/3 lg:flex-none">
             <div class="border-black/12.5 shadow-soft-xl relative flex h-full min-w-0 flex-col break-words rounded-2xl border-0 border-solid bg-white bg-clip-border">
                 <div class="border-black/12.5 mb-0 rounded-t-2xl border-b-0 border-solid bg-white p-6 pb-0">
                     <h6>Orders overview</h6>
@@ -734,5 +820,5 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 </div>
