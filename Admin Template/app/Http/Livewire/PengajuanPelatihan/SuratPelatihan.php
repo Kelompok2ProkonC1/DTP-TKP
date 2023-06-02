@@ -51,6 +51,7 @@ class SuratPelatihan extends Component
     
         $pdf = PDF::loadView('livewire.pengajuan-pelatihan.download-pdf', compact('image', 'div_admin', 'div_karyawan','pengajuan','karyawan','admin', 'karyawan','surat', 'pelatihan', 'kategori'))
                     ->setPaper('a4');
+                    
     
         return $pdf->download('Surat Persetujuan Pelatihan.pdf');
     }

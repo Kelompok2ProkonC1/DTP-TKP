@@ -10,7 +10,7 @@
                         <div class="max-w-full px-3 w-1 lg:flex-none">
                             <div style="margin-left: 20px;">
                                 <div style="background-color: #ffffff; color: black; width: 210mm; height: 297mm; border: 1px solid #ccc; padding: 60px; display: center; justify-content: center;">
-                                    <div style="margin-top: 20px;">
+                                    <div style="margin-top: 20px;  font-family: Times New Roman, Times, serif; ">
                                         <div style="text-align: right; float: right;">
                                             <img src="{{ asset('logo_divisi.png') }}" alt="Logo Perusahaan" style="width: 180px;">
                                         </div>
@@ -20,11 +20,11 @@
                                         <div style="text-align: center; margin: 30px;">
                                             <p style="margin: 20px; font-size: 20px; font-weight: bold;">Surat Persetujuan Pelatihan</p>
                                         </div>
-                                        <p style="font-weight: bold;">No. {{ sprintf("%03d", $surat->nomer_surat)  }}/{{ date("d-m-Y", strtotime($pelatihan->tanggal_verifikasi)) }}</p>
+                                        <p style="font-weight: bold;">No. {{ sprintf("%03d", $surat->nomer_surat)  }}/{{ date("d-m-Y", strtotime($pengajuan->tanggal_verifikasi)) }}</p>
                                         <p style="margin-top: 30px; text-align: justify;">
                                             Dengan hormat,<br><br>
                                             Sehubungan dengan pengajuan pelatihan karyawan yang diajukan oleh karyawan <b>{{ $karyawan->nama_user }}</b> dari <b>Divisi {{ $div_karyawan->nama_divisi }}</b>, kami memberikan persetujuan untuk melaksanakan pelatihan tersebut.<br><br>
-                                            Dengan ini kami persilahkan kepada karyawan yang bersangkuan untuk melaksanakan pelatihan dengan rincian sebagai berikut :
+                                            Dengan ini kami persilahkan kepada karyawan yang bersangkutan untuk melaksanakan pelatihan dengan rincian sebagai berikut :
                                         </p>
                                         <table style="margin-top: 20px; margin-left: 30px;">
                                             <tr>
@@ -66,12 +66,12 @@
                         </div>
                     </div>
                     <div class="flow-root">
-                        <form action="{{ route('download-pdf') }}" method="POST" style="display: inline;" target="_blank" class="ml-3">
+                        <form action="{{ route('download-pdf') }}" method="POST" style="display: inline;" target="" class="ml-3">
                             @csrf
                             <input type="hidden" name="id" value="{{ $pengajuan->id }}" class="mr-3">
                             <!-- Add other form fields here -->
                             <!-- <button type="submit"><i class="fas fa-search" aria-hidden="true"></i></button> -->
-                            <button type="submit" class=" fas fa-download inline-block mr-6 px-6 py-3 mt-3 mb-2 font-bold text-center text-white uppercase align-middle transition-all bg-transparent border-0 rounded-lg cursor-pointer active:opacity-85 hover:scale-102 hover:shadow-soft-xs leading-pro text-size-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 bg-gradient-dark-gray hover:border-slate-700 hover:bg-slate-700 hover:text-white" onclick="return confirm('Apakah Anda yakin ingin mendownload file pengajuan pelatihan ini?')"> Download Surat</button>
+                            <button type="submit" style="margin-left: 20px;" class=" fas fa-download inline-block mr-6 px-6 py-3 mt-3 mb-2 font-bold text-center text-white uppercase align-middle transition-all bg-transparent border-0 rounded-lg cursor-pointer active:opacity-85 hover:scale-102 hover:shadow-soft-xs leading-pro text-size-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 bg-gradient-dark-gray hover:border-slate-700 hover:bg-slate-700 hover:text-white" onclick="return confirm('Apakah Anda yakin ingin mendownload file pengajuan pelatihan ini?')"> Download Surat</button>
                         </form>
                     </div>
                 </div>

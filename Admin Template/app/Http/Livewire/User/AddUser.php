@@ -43,14 +43,14 @@ class AddUser extends Component
             'role_user' => $this->role
         ]);
 
-        // // User account for sending into email user.
-        // $akun_user = [
-        //     'email' => $this->email,
-        //     'password' => $this->password
-        // ];
+        // User account for sending into email user.
+        $akun_user = [
+            'email' => $this->email,
+            'password' => $this->password
+        ];
 
-        // // send email
-        // Mail::to($this->email)->send(new ContactFormMail($akun_user));
+        // send email
+        Mail::to($this->email)->send(new ContactFormMail($akun_user));
 
         // if (env('IS_DEMO') && auth()->user()->id == 1) {
         //     $this->user->save();

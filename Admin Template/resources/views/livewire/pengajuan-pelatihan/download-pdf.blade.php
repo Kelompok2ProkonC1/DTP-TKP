@@ -61,12 +61,12 @@
         <div class="title">
             Surat Persetujuan Pelatihan
             </div>
-            <p class="nomer">No. {{ sprintf("%03d", $surat->nomer_surat)  }}/{{ date("d-m-Y", strtotime($pelatihan->tanggal_verifikasi)) }}</p>
+            <p class="nomer">No. {{ sprintf("%03d", $surat->nomer_surat)  }}/{{ date("d-m-Y", strtotime($pengajuan->tanggal_verifikasi)) }}</p>
             
         <p class="content">
             Dengan hormat,<br><br>
             Sehubungan dengan pengajuan pelatihan karyawan yang diajukan oleh karyawan  <b>{{ $karyawan->nama_user }}</b> dari  <b>Divisi  {{ $div_karyawan->nama_divisi }}</b>, kami memberikan persetujuan untuk melaksanakan pelatihan tersebut.<br><br>
-            Dengan ini kami persilahkan kepada karyawan yang bersangkuan untuk melaksanakan pelatihan dengan rincian sebagai berikut :
+            Dengan ini kami persilahkan kepada karyawan yang bersangkutan untuk melaksanakan pelatihan dengan rincian sebagai berikut :
             </p>
         <table>
             <tr>
@@ -82,7 +82,7 @@
             <tr>
                 <td>Tempat Pelatihan</td>
                 <td>:</td>
-                <td>{{ $pelatihan->tempat_pelatihan }}</td>
+                <td>Rp. {{ number_format($pelatihan->biaya_pelatihan, 0, ',', '.') }}</td>
             </tr>
             <tr>
                 <td>Biaya Pelatihan</td>
