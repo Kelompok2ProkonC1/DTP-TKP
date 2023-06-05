@@ -12,7 +12,7 @@
                 </div>
                 <div class="flex-none w-auto max-w-full px-3 my-auto">
                     <div class="h-full">
-                        <h5 class="mb-1">{{ $user->name }}</h5>
+                        <h5 class="mb-1">{{ auth()->user()->nama_user }}</h5>
                         <p class="mb-0 font-semibold leading-normal text-size-sm">CEO / Co-Founder</p>
                     </div>
                 </div>
@@ -112,8 +112,8 @@
                     </div>
                     @endif
 
-                    <form wire:submit.prevent="save">
-
+                    <form action="{{ route('updating-profile') }}" method="POST">
+                        @csrf
                         <div class="flex flex-wrap -mx-3">
                             <div class="max-w-full px-3 w-1/2 lg:flex-none">
                                 <div class="flex flex-col h-full">
@@ -121,8 +121,8 @@
                                     </h6>
 
                                     <div class="mb-4">
-                                        <input wire:model.lazy="user.nama_user" type="text" class="text-size-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="Name" id="user-name" required />
-                                        @error('user.nama_user') <p class="text-size-sm text-red-500">{{ $message }}</p>
+                                        <input name="nama_user" type="text" class="text-size-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="Name" id="user-name" value="{{ auth()->user()->nama_user }}" required />
+                                        @error('nama_user') <p class="text-size-sm text-red-500">{{ $message }}</p>
                                         @enderror
                                     </div>
 
@@ -130,8 +130,8 @@
                                     <h6 class="font-bold leading-tight uppercase text-size-xs text-slate-500">Email</h6>
 
                                     <div class="mb-4">
-                                        <input wire:model.lazy="user.email" type="email" class="text-size-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="Email" id="user-email" required />
-                                        @error('user.email') <p class="text-size-sm text-red-500">{{ $message }}</p>
+                                        <input name="email" type="email" class="text-size-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="Email" id="user-email" value="{{ auth()->user()->email }}" required />
+                                        @error('email') <p class="text-size-sm text-red-500">{{ $message }}</p>
                                         @enderror
 
                                     </div>
@@ -145,8 +145,8 @@
                                     </h6>
 
                                     <div class="mb-4">
-                                        <input wire:model.lazy="user.nik_user" type="phone" class="text-size-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="NIK" id="phone" required />
-                                        @error('user.nik_user') <p class="text-size-sm text-red-500">{{ $message }}</p>
+                                        <input name="nik_user" type="phone" class="text-size-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="NIK" id="phone" value="{{ auth()->user()->nik_user }}" required />
+                                        @error('nik_user') <p class="text-size-sm text-red-500">{{ $message }}</p>
                                         @enderror
 
                                     </div>
@@ -155,9 +155,16 @@
                                     </h6>
 
                                     <div class="mb-4">
-                                        <input wire:model.lazy="user.id_divisi" type="text" class="text-size-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="Divisi" id="user-location" required />
-                                        
-                                        @error('user.id_divisi') <p class="text-size-sm text-red-500">{{ $message }}</p>
+                                        <select name="id_divisi" type="text" class="text-size-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="Pilih Divisi User..." aria-label="Divisi" aria-describedby="divisi-addon" required>
+                                            @foreach ($divisi as $d)
+                                            @if(auth()->user()->id_divisi == $d->id)
+                                            <option value="{{$d->id}}" selected>{{ $d->nama_divisi }}</option>
+                                            @else
+                                            <option value="{{$d->id}}">{{ $d->nama_divisi }}</option>
+                                            @endif
+                                            @endforeach
+                                        </select>
+                                        @error('divisi') <p class="text-size-sm text-red-500">{{ $message }}</p>
                                         @enderror
 
                                     </div>

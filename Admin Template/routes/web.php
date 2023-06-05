@@ -63,7 +63,8 @@ Route::middleware('guest')->group(function () {
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', Dashboard::class)->name('dashboard');
     Route::get('/user-profile', UserProfile::class)->name('user-profile');
-    
+    Route::post('/updating-profile', [UserProfile::class, 'update_profile'])->name('updating-profile');
+
     // Log Pengajuan Pelatihan
     Route::get('/history', History::class)->name('history');
     Route::post('/info-pengajuan', InfoPengajuan::class)->name('info-pengajuan');
