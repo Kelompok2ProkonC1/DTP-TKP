@@ -109,23 +109,17 @@
                                         <!-- Add other form fields here -->
                                         <button type="submit" onclick="return confirm('Apakah Anda yakin ingin menerima pengajuan pelatihan tersebut?')"><i class="fas fa-check-circle" aria-hidden="true"></i></button>
                                     </form>
-                                    <form action="{{ route('disapprove-pengajuan') }}" method="POST" style="display: inline;" class="ml-3">
+                                    <form action="{{ route('tolak-pengajuan') }}" method="POST" style="display: inline;" class="ml-3">
                                         @csrf
                                         <input type="hidden" name="id" value="{{ $p->id }}">
                                         <!-- Add other form fields here -->
-                                        <button type="submit" onclick="return confirm('Apakah Anda yakin ingin menolak pengajuan pelatihan tersebut?')"><i class="fas fa-times-circle" aria-hidden="true"></i></button>
+                                        <button type="submit"><i class="fas fa-times-circle" aria-hidden="true"></i></button>
                                     </form>
                                     <form action="{{ url('info-pengajuan') }}" method="POST" style="display: inline;" class="ml-3">
                                         @csrf
                                         <input type="hidden" name="id" value="{{ $p->id }}">
                                         <!-- Add other form fields here -->
                                         <button type="submit"><i class="fas fa-search" aria-hidden="true"></i></button>
-                                    </form>
-                                    <form action="{{ url('verifikasi') }}" method="GET" style="display: inline;" class="ml-3">
-                                        @csrf
-                                        <input type="hidden" name="id" value="{{ $p->id }}">
-                                        <!-- Add other form fields here -->
-                                        <button type="submit" onclick="return confirm('Apakah Anda yakin ingin mendownload file pengajuan pelatihan ini?')"><i class="fas fa-download" aria-hidden="true"></i></button>
                                     </form>
                                     </p>
                                 </td>

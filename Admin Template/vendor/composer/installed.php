@@ -1,5 +1,6 @@
 <?php return array(
     'root' => array(
+<<<<<<< HEAD
         'name' => 'laravel/laravel',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
@@ -7,16 +8,32 @@
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
+=======
+        'pretty_version' => 'dev-main',
+        'version' => 'dev-main',
+        'type' => 'project',
+        'install_path' => __DIR__ . '/../../',
+        'aliases' => array(),
+        'reference' => '87fd43e8848ee0d47b4ff99c562cda45bffa018e',
+        'name' => 'laravel/laravel',
+>>>>>>> 8a725e46eb63b8d56f09b4e84432d1d90956044f
         'dev' => true,
     ),
     'versions' => array(
         'barryvdh/laravel-dompdf' => array(
             'pretty_version' => 'v2.0.1',
             'version' => '2.0.1.0',
+<<<<<<< HEAD
             'reference' => '9843d2be423670fb434f4c978b3c0f4dd92c87a6',
             'type' => 'library',
             'install_path' => __DIR__ . '/../barryvdh/laravel-dompdf',
             'aliases' => array(),
+=======
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../barryvdh/laravel-dompdf',
+            'aliases' => array(),
+            'reference' => '9843d2be423670fb434f4c978b3c0f4dd92c87a6',
+>>>>>>> 8a725e46eb63b8d56f09b4e84432d1d90956044f
             'dev_requirement' => false,
         ),
         'brick/math' => array(
@@ -83,6 +100,15 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../dompdf/dompdf',
             'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'dompdf/dompdf' => array(
+            'pretty_version' => 'v2.0.3',
+            'version' => '2.0.3.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../dompdf/dompdf',
+            'aliases' => array(),
+            'reference' => 'e8d2d5e37e8b0b30f0732a011295ab80680d7e85',
             'dev_requirement' => false,
         ),
         'dragonmantank/cron-expression' => array(
@@ -394,10 +420,17 @@
         'laravel/laravel' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
+<<<<<<< HEAD
             'reference' => '51ab484d6d395906db689666d999380cd586db90',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
+=======
+            'type' => 'project',
+            'install_path' => __DIR__ . '/../../',
+            'aliases' => array(),
+            'reference' => '87fd43e8848ee0d47b4ff99c562cda45bffa018e',
+>>>>>>> 8a725e46eb63b8d56f09b4e84432d1d90956044f
             'dev_requirement' => false,
         ),
         'laravel/sail' => array(
@@ -488,6 +521,15 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../masterminds/html5',
             'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'masterminds/html5' => array(
+            'pretty_version' => '2.8.0',
+            'version' => '2.8.0.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../masterminds/html5',
+            'aliases' => array(),
+            'reference' => '3c5d5a56d56f48a1ca08a0670f0f80c1dad368f3',
             'dev_requirement' => false,
         ),
         'mockery/mockery' => array(
@@ -598,19 +640,33 @@
         'phenx/php-font-lib' => array(
             'pretty_version' => '0.5.4',
             'version' => '0.5.4.0',
+<<<<<<< HEAD
             'reference' => 'dd448ad1ce34c63d09baccd05415e361300c35b4',
             'type' => 'library',
             'install_path' => __DIR__ . '/../phenx/php-font-lib',
             'aliases' => array(),
+=======
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../phenx/php-font-lib',
+            'aliases' => array(),
+            'reference' => 'dd448ad1ce34c63d09baccd05415e361300c35b4',
+>>>>>>> 8a725e46eb63b8d56f09b4e84432d1d90956044f
             'dev_requirement' => false,
         ),
         'phenx/php-svg-lib' => array(
             'pretty_version' => '0.5.0',
             'version' => '0.5.0.0',
+<<<<<<< HEAD
             'reference' => '76876c6cf3080bcb6f249d7d59705108166a6685',
             'type' => 'library',
             'install_path' => __DIR__ . '/../phenx/php-svg-lib',
             'aliases' => array(),
+=======
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../phenx/php-svg-lib',
+            'aliases' => array(),
+            'reference' => '76876c6cf3080bcb6f249d7d59705108166a6685',
+>>>>>>> 8a725e46eb63b8d56f09b4e84432d1d90956044f
             'dev_requirement' => false,
         ),
         'phpoption/phpoption' => array(
@@ -827,10 +883,17 @@
         'sabberworm/php-css-parser' => array(
             'pretty_version' => '8.4.0',
             'version' => '8.4.0.0',
+<<<<<<< HEAD
             'reference' => 'e41d2140031d533348b2192a83f02d8dd8a71d30',
             'type' => 'library',
             'install_path' => __DIR__ . '/../sabberworm/php-css-parser',
             'aliases' => array(),
+=======
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../sabberworm/php-css-parser',
+            'aliases' => array(),
+            'reference' => 'e41d2140031d533348b2192a83f02d8dd8a71d30',
+>>>>>>> 8a725e46eb63b8d56f09b4e84432d1d90956044f
             'dev_requirement' => false,
         ),
         'sebastian/cli-parser' => array(

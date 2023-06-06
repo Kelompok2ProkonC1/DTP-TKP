@@ -562,9 +562,18 @@ class ComposerStaticInit95fcc1359218e3b8aa2a903cfcf86535
         'App\\Http\\Livewire\\Division\\DivisionManagement' => __DIR__ . '/../..' . '/app/Http/Livewire/Division/DivisionManagement.php',
         'App\\Http\\Livewire\\Division\\UpdateDivision' => __DIR__ . '/../..' . '/app/Http/Livewire/Division/UpdateDivision.php',
         'App\\Http\\Livewire\\LaravelExamples\\UserProfile' => __DIR__ . '/../..' . '/app/Http/Livewire/LaravelExamples/UserProfile.php',
+<<<<<<< HEAD
         'App\\Http\\Livewire\\PengajuanPelatihan\\History' => __DIR__ . '/../..' . '/app/Http/Livewire/PengajuanPelatihan/History.php',
         'App\\Http\\Livewire\\PengajuanPelatihan\\InfoPengajuan' => __DIR__ . '/../..' . '/app/Http/Livewire/PengajuanPelatihan/InfoPengajuan.php',
         'App\\Http\\Livewire\\PengajuanPelatihan\\PengajuanPelatihan' => __DIR__ . '/../..' . '/app/Http/Livewire/PengajuanPelatihan/PengajuanPelatihan.php',
+=======
+        'App\\Http\\Livewire\\PengajuanPelatihan\\EditPengajuan' => __DIR__ . '/../..' . '/app/Http/Livewire/PengajuanPelatihan/EditPengajuan.php',
+        'App\\Http\\Livewire\\PengajuanPelatihan\\History' => __DIR__ . '/../..' . '/app/Http/Livewire/PengajuanPelatihan/History.php',
+        'App\\Http\\Livewire\\PengajuanPelatihan\\InfoPengajuan' => __DIR__ . '/../..' . '/app/Http/Livewire/PengajuanPelatihan/InfoPengajuan.php',
+        'App\\Http\\Livewire\\PengajuanPelatihan\\PengajuanPelatihan' => __DIR__ . '/../..' . '/app/Http/Livewire/PengajuanPelatihan/PengajuanPelatihan.php',
+        'App\\Http\\Livewire\\PengajuanPelatihan\\SuratPelatihan' => __DIR__ . '/../..' . '/app/Http/Livewire/PengajuanPelatihan/SuratPelatihan.php',
+        'App\\Http\\Livewire\\PengajuanPelatihan\\TolakPengajuan' => __DIR__ . '/../..' . '/app/Http/Livewire/PengajuanPelatihan/TolakPengajuan.php',
+>>>>>>> 8a725e46eb63b8d56f09b4e84432d1d90956044f
         'App\\Http\\Livewire\\PengajuanPelatihan\\Verifikasi' => __DIR__ . '/../..' . '/app/Http/Livewire/PengajuanPelatihan/Verifikasi.php',
         'App\\Http\\Livewire\\Profile' => __DIR__ . '/../..' . '/app/Http/Livewire/Profile.php',
         'App\\Http\\Livewire\\Rtl' => __DIR__ . '/../..' . '/app/Http/Livewire/Rtl.php',
@@ -590,6 +599,10 @@ class ComposerStaticInit95fcc1359218e3b8aa2a903cfcf86535
         'App\\Models\\Divisi' => __DIR__ . '/../..' . '/app/Models/Divisi.php',
         'App\\Models\\Pelatihan' => __DIR__ . '/../..' . '/app/Models/Pelatihan.php',
         'App\\Models\\Pengajuan' => __DIR__ . '/../..' . '/app/Models/Pengajuan.php',
+<<<<<<< HEAD
+=======
+        'App\\Models\\Surat' => __DIR__ . '/../..' . '/app/Models/Surat.php',
+>>>>>>> 8a725e46eb63b8d56f09b4e84432d1d90956044f
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
         'App\\Notifications\\ResetPassword' => __DIR__ . '/../..' . '/app/Notifications/ResetPassword.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',

@@ -10,6 +10,11 @@
                                 <p>Informasi lengkap suatu spesifik pengajuan pelatihan</p>
                             </div>
                         </div>
+                        <div class="max-w-full px-3 w-1/2 lg:flex-none">
+                            <div class="mx-6">
+                                <a class="float-right inline-block px-6 py-3 mt-6 mb-2 font-bold text-center text-white uppercase align-middle transition-all bg-transparent border-0 rounded-lg cursor-pointer shadow-soft-md bg-150 bg-x-25 leading-pro text-size-xs bg-gradient-fuchsia hover:shadow-soft-2xl hover:scale-102" href="{{ url()->previous() }}">Back To List</a>
+                            </div>
+                        </div>
                     </div>
                     @if (Session::has('status'))
 
@@ -21,14 +26,14 @@
                     </div>
 
                     @endif
-                    <form wire:submit.prevent="add_pengajuan_pelatihan">
+                    <form wire:submit.prevent="add_pengajuan_pelatihan" enctype="multipart/form-data">
                         @csrf
                         <div class="flex flex-wrap -mx-6">
                             <div class="max-w-full px-3 w-1/2 lg:flex-none">
                                 <div class="flex flex-col h-full">
                                     <h6 class="font-bold leading-tight uppercase text-size-xs text-slate-500">Nama Pengaju</h6>
                                     <div class="mb-4">
-                                        <input type="text" class="text-size-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" value="{{ $user->nama_user }}" readonly />
+                                        <input type="text" class="text-size-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 focus:outline-none" style="cursor: auto;" value="{{ $user->nama_user }}" readonly />
                                     </div>
                                     <h6 class="font-bold leading-tight uppercase text-size-xs text-slate-500">Judul Pelatihan</h6>
                                     <div class="mb-4">
@@ -40,7 +45,7 @@
                                 <div class="flex flex-col h-full">
                                     <h6 class="font-bold leading-tight uppercase text-size-xs text-slate-500">Divisi Pengaju</h6>
                                     <div class="mb-4">
-                                        <input type="text" class="text-size-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" value="{{ $divisi->nama_divisi }}" readonly />
+                                        <input type="text" class="text-size-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 focus:outline-none" style="cursor: auto;" value="{{ $divisi->nama_divisi }}" readonly />
                                     </div>
                                     <h6 class="font-bold leading-tight uppercase text-size-xs text-slate-500">Kategori Pelatihan</h6>
                                     <div class="mb-4">
@@ -97,7 +102,7 @@
                                     </div>
                                     <h6 class="font-bold leading-tight uppercase text-size-xs text-slate-500">Gambar Pelatihan</h6>
                                     <div class="mb-4">
-                                        <input type="file" class="text-size-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow">
+                                        <input wire:model.lazy="gambar_pelatihan" type="file" class="text-size-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow">
                                     </div>
                                 </div>
                             </div>

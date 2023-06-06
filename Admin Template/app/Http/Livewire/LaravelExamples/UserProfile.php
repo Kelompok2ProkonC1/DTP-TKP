@@ -4,38 +4,25 @@ namespace App\Http\Livewire\LaravelExamples;
 
 use App\Models\User;
 use App\Models\Divisi;
-
+use Illuminate\Http\Request;
 use Livewire\Component;
 
 class UserProfile extends Component
 {
-    public User $user;
 
-    protected $rules = [
-        'user.nama_user' => 'max:40|min:3',
-        'user.email' => 'email:rfc,dns',
-        'user.nik_user' => 'max:13|min:11',
-        // 'user.about' => 'max:200',
-        'user.id_divisi' => 'min:1'
-    ];
-
-    public function mount()
+    public function update_profile(Request $request)
     {
-        $this->user = auth()->user();
-    }
+        $user = User::find(auth()->user()->id);
+        if (auth()->user()->email == $user->email) {
+                // Update the user's data
+                $user->nama_user = $request->input('nama_user');
+                $user->email = $request->input('email');
+                $user->nik_user = $request->input('nik_user');
+                $user->id_divisi = $request->input('id_divisi');
 
-    public function save()
-    {
-        $this->validate();
-
-        if (env('IS_DEMO') && auth()->user()->id == 1) {
-            if (auth()->user()->email == $this->user->email) {
-                $this->user->save();
+                $user->save();
                 return back()->with('status', "Profile Anda berhasil disimpan!");
             }
-        }
-
-        $this->user->save();
 
         return back()->with('status', "Profile Anda berhasil disimpan!");
     }

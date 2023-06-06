@@ -41,9 +41,9 @@
                                     </div>
                                     <h6 class="font-bold leading-tight uppercase text-size-xs text-slate-500">NIK</h6>
                                     <div class="mb-4">
-                                        <input type="text" class="text-size-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="Masukkan NIK User..." name="nik" aria-label="NIK" aria-describedby="nik-addon" pattern=".{16,}"  maxlength = "16"required title="must 16 digit numbers" value="{{ $user->nik_user }}" />
+                                        <input type="text" class="text-size-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="Masukkan NIK User..." name="nik" aria-label="NIK" aria-describedby="nik-addon" pattern=".{16,}"  maxlength = "16" required title="must 16 digit numbers" value="{{ $user->nik_user }}" />
                                         @error('nik')
-                                         {{-- <p class="text-size-sm text-red-500">{{ $message }}</p> --}}
+                                        {{-- <p class="text-size-sm text-red-500">{{ $message }}</p> --}}
                                         @enderror
                                     </div>
                                 </div>
@@ -74,6 +74,7 @@
                                 <div class="flex flex-col h-full">
                                     <h6 class="font-bold leading-tight uppercase text-size-xs text-slate-500">Role</h6>
                                     <div class="mb-4">
+                                        @if(auth()->user()->role_user == 'Super Admin')
                                         <select type="text" class="text-size-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="Pilih Role User..." name="role" aria-label="Role" aria-describedby="role-addon" required>
                                             <option value="Super Admin" {{ $user->role_user == 'Super Admin' ? 'selected' : '' }}>
                                                 Super Admin
@@ -85,6 +86,10 @@
                                                 Karyawan
                                             </option>
                                         </select>
+                                        @endif
+                                        @if(auth()->user()->role_user == 'Admin')
+                                        <input type="text" class="text-size-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="Pilih Role User..." name="role" aria-label="Role" aria-describedby="role-addon" required value="Karyawan" readonly/>
+                                        @endif
                                         @error('role') <p class="text-size-sm text-red-500">{{ $message }}</p>
                                         @enderror
                                     </div>

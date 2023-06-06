@@ -26,9 +26,18 @@ return array(
     'App\\Http\\Livewire\\Division\\DivisionManagement' => $baseDir . '/app/Http/Livewire/Division/DivisionManagement.php',
     'App\\Http\\Livewire\\Division\\UpdateDivision' => $baseDir . '/app/Http/Livewire/Division/UpdateDivision.php',
     'App\\Http\\Livewire\\LaravelExamples\\UserProfile' => $baseDir . '/app/Http/Livewire/LaravelExamples/UserProfile.php',
+<<<<<<< HEAD
     'App\\Http\\Livewire\\PengajuanPelatihan\\History' => $baseDir . '/app/Http/Livewire/PengajuanPelatihan/History.php',
     'App\\Http\\Livewire\\PengajuanPelatihan\\InfoPengajuan' => $baseDir . '/app/Http/Livewire/PengajuanPelatihan/InfoPengajuan.php',
     'App\\Http\\Livewire\\PengajuanPelatihan\\PengajuanPelatihan' => $baseDir . '/app/Http/Livewire/PengajuanPelatihan/PengajuanPelatihan.php',
+=======
+    'App\\Http\\Livewire\\PengajuanPelatihan\\EditPengajuan' => $baseDir . '/app/Http/Livewire/PengajuanPelatihan/EditPengajuan.php',
+    'App\\Http\\Livewire\\PengajuanPelatihan\\History' => $baseDir . '/app/Http/Livewire/PengajuanPelatihan/History.php',
+    'App\\Http\\Livewire\\PengajuanPelatihan\\InfoPengajuan' => $baseDir . '/app/Http/Livewire/PengajuanPelatihan/InfoPengajuan.php',
+    'App\\Http\\Livewire\\PengajuanPelatihan\\PengajuanPelatihan' => $baseDir . '/app/Http/Livewire/PengajuanPelatihan/PengajuanPelatihan.php',
+    'App\\Http\\Livewire\\PengajuanPelatihan\\SuratPelatihan' => $baseDir . '/app/Http/Livewire/PengajuanPelatihan/SuratPelatihan.php',
+    'App\\Http\\Livewire\\PengajuanPelatihan\\TolakPengajuan' => $baseDir . '/app/Http/Livewire/PengajuanPelatihan/TolakPengajuan.php',
+>>>>>>> 8a725e46eb63b8d56f09b4e84432d1d90956044f
     'App\\Http\\Livewire\\PengajuanPelatihan\\Verifikasi' => $baseDir . '/app/Http/Livewire/PengajuanPelatihan/Verifikasi.php',
     'App\\Http\\Livewire\\Profile' => $baseDir . '/app/Http/Livewire/Profile.php',
     'App\\Http\\Livewire\\Rtl' => $baseDir . '/app/Http/Livewire/Rtl.php',
@@ -54,6 +63,10 @@ return array(
     'App\\Models\\Divisi' => $baseDir . '/app/Models/Divisi.php',
     'App\\Models\\Pelatihan' => $baseDir . '/app/Models/Pelatihan.php',
     'App\\Models\\Pengajuan' => $baseDir . '/app/Models/Pengajuan.php',
+<<<<<<< HEAD
+=======
+    'App\\Models\\Surat' => $baseDir . '/app/Models/Surat.php',
+>>>>>>> 8a725e46eb63b8d56f09b4e84432d1d90956044f
     'App\\Models\\User' => $baseDir . '/app/Models/User.php',
     'App\\Notifications\\ResetPassword' => $baseDir . '/app/Notifications/ResetPassword.php',
     'App\\Providers\\AppServiceProvider' => $baseDir . '/app/Providers/AppServiceProvider.php',

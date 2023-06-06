@@ -19,6 +19,7 @@ return new class extends Migration
             $table->date('tanggal_verifikasi')->nullable();
             $table->string('dokumen_pengajuan')->required();
             $table->string('status_pengajuan', 10)->required();
+            $table->string('deskripsi_revisi')->nullable();
             $table->unsignedBigInteger('id_pelatihan')->required();
             $table->foreign('id_pelatihan')->references('id')->on('pelatihan')->onDelete('restrict');
             $table->unsignedBigInteger('id_user')->required();
