@@ -45,20 +45,20 @@ class EditPengajuan extends Component
         'gambar_pelatihan' => 'nullable|mimes:jpeg,png,jpg,gif|max:2048',
     ];
 
-    public function edit_pengajuan_pelatihan()
+    public function edit_pengajuan_pelatihan(Request $request)
     {
         // Validate the rules above.
-        $this->validate();
+        // $this->validate();
         
-        if($this->gambar_pelatihan != null)
+        if($request->file('gambar_pelatihan') != null)
         {
             Storage::delete('public/images/' . $this->gambar_pelatihan_before);
 
             // Generate unique file name
-            $fileName = time() . '.' . $this->gambar_pelatihan->getClientOriginalExtension();
+            $fileName = time() . '.' . $request->file('judul_pelatihan')->getClientOriginalExtension();
             
             // Move file
-            $this->gambar_pelatihan->storeAs('public/images', $fileName);
+            $request->file('gambar_pelatihan')->move(public_path('images'), $fileName);
         }
 
         // Find specific row.
@@ -66,16 +66,16 @@ class EditPengajuan extends Component
         $pengajuan = Pengajuan::find($this->id_pengajuan);
 
         // Set all data in row pelatihan's table
-        $pelatihan->judul_pelatihan = $this->judul_pelatihan;
-        $pelatihan->id_kategori = $this->id_kategori;
-        $pelatihan->deskripsi_pelatihan = $this->deskripsi_pelatihan;
-        $pelatihan->tanggal_dimulai = $this->tanggal_dimulai;
-        $pelatihan->tanggal_berakhir = $this->tanggal_berakhir;
-        $pelatihan->biaya_pelatihan = $this->biaya_pelatihan;
-        $pelatihan->tempat_pelatihan = $this->tempat_pelatihan;
-        $pelatihan->bersetifikat = $this->bersetifikat;
-        $pelatihan->scope_pelatihan = $this->scope_pelatihan;
-        if($this->gambar_pelatihan != null)
+        $pelatihan->judul_pelatihan = $request->input('judul_pelatihan');
+        $pelatihan->id_kategori = $request->input('id_kategori');
+        $pelatihan->deskripsi_pelatihan = $request->input('deskripsi_pelatihan');
+        $pelatihan->tanggal_dimulai = $request->input('tanggal_dimulai');
+        $pelatihan->tanggal_berakhir = $request->input('tanggal_berakhir');
+        $pelatihan->biaya_pelatihan = $request->input('biaya_pelatihan');
+        $pelatihan->tempat_pelatihan = $request->input('tempat_pelatihan');
+        $pelatihan->bersetifikat = $request->input('bersertifikat');
+        $pelatihan->scope_pelatihan = $request->input('scope_pelatihan');
+        if($request->file('gambar_pelatihan') != null)
         {
             $pelatihan->gambar_pelatihan = $fileName;
         }
@@ -125,4 +125,3 @@ class EditPengajuan extends Component
         return view('livewire.pengajuan-pelatihan.edit-pengajuan', compact('divisi', 'user', 'pengajuan', 'pelatihan', 'kategori'));
     }  
 }
-?>

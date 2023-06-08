@@ -53,10 +53,10 @@
                                         </td>
 
                                         <td class="p-2 align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
-                                            <p class="mb-0 font-semibold leading-tight text-size-s">{{ $division->nama_divisi }}</p>
+                                            <p class="mb-0 font-semibold leading-tight text-size-xs">{{ $division->nama_divisi }}</p>
                                         </td>
                                         <td class="p-2 align-middle bg-transparent border-b whitespace-pre-line shadow-transparent">
-                                            <p class="mb-0 font-semibold leading-tight text-size-xs" style="max-width: 250px;">{{ $division->deskripsi_divisi }}</p>
+                                            <p class="mb-0 font-semibold leading-tight text-size-xs" style="max-width: 400px;text-align: justify;">{{ $division->deskripsi_divisi }}</p>
                                         </td>
                                         <td class="p-2 text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
                                             <p class="mb-0 font-semibold leading-tight text-size-xs">{{ date('Y-m-d', $division->created_at->timestamp) }}</p>

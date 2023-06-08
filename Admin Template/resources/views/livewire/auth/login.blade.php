@@ -52,15 +52,8 @@
                                             @enderror
                                         </div>
                                         <div class="pl-12">
-
-                                            <input wire:model="remember_me"
-                                                class="mt-0.54 rounded-10 duration-250 ease-soft-in-out after:rounded-circle after:shadow-soft-2xl after:duration-250 checked:after:translate-x-5.25 h-5-em relative float-left -ml-12 w-10 cursor-pointer appearance-none border border-solid border-gray-200 bg-slate-800/10 bg-none bg-contain bg-left bg-no-repeat align-top transition-all after:absolute after:top-px after:h-4 after:w-4 after:translate-x-px after:bg-white after:content-[''] checked:border-slate-800/95 checked:bg-slate-800/95 checked:bg-none checked:bg-right"
-                                                type="checkbox" id="rememberMe">
-                                            <label
-                                                class="mb-2 ml-1 cursor-pointer select-none text-size-sm right-10"
-                                                for="rememberMe">Remember me?</label>
                                                 
-                                                <a class="invisible">aaaaaaaaa</a>
+                                                <a class="invisible">aaaaaaaaaaaaaaaaaaaa</a>
 
                                                 <a href="{{ route('forgot-password') }}"
                                            class="relative z-10 font-semibold bg-clip-text text-xs pl-5 hover:underline">Forgot Password</a><br />

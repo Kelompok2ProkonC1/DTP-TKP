@@ -12,7 +12,7 @@
                                 <div style="background-color: #ffffff; color: black; width: 210mm; height: 297mm; border: 1px solid #ccc; padding: 60px; display: center; justify-content: center;">
                                     <div style="margin-top: 20px;  font-family: Times New Roman, Times, serif; ">
                                         <div style="text-align: right; float: right;">
-                                            <img src="{{ asset('logo_divisi.png') }}" alt="Logo Perusahaan" style="width: 180px;">
+                                            <img src="https://dtptkp-fe-dtptkp-dev.apps-okd-1-maas.playcourt.id/assets/logo.svg" alt="Logo Perusahaan" style="width: 180px;">
                                         </div>
 
 
@@ -57,8 +57,12 @@
                                         <p style="margin-top: 60px;font-weight: bold;">Hormat kami,</p>
                                         <!-- <div style="text-align: left; margin-top: 20px;">
                                             <img src="qr_code.png" alt="QR Code">
+                                            
                                         </div> -->
-                                        <p style="margin-top: 60px; font-weight: bold; text-decoration: underline;">{{ $admin->nama_user }}</p>
+                                        
+                                            {!! QrCode::size(100)->generate(route('qr-info', ['id' => $pengajuan->id])); !!}
+                                            {{-- {!! QrCode::size(100)->generate($admin->nama_user); !!} --}}
+                                        <p style="margin-top: 10px; font-weight: bold; text-decoration: underline;">{{ $admin->nama_user }}</p>
                                         <p style="font-weight: bold;"> {{ $div_admin->nama_divisi }}</p>
                                     </div>
                                 </div>
@@ -66,6 +70,7 @@
                         </div>
                     </div>
                     <div class="flow-root">
+                  
                         <form action="{{ route('download-pdf') }}" method="POST" style="display: inline;" target="" class="ml-3">
                             @csrf
                             <input type="hidden" name="id" value="{{ $pengajuan->id }}" class="mr-3">

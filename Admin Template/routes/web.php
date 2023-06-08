@@ -6,6 +6,7 @@ use App\Http\Livewire\Auth\ForgotPassword;
 use App\Http\Livewire\Auth\ResetPassword;
 use App\Http\Livewire\Auth\Register;
 use App\Http\Livewire\Auth\Login;
+use App\Http\Livewire\Auth\QRInfo;
 use App\Http\Livewire\Dashboard;
 use App\Http\Livewire\Billing;
 use App\Http\Livewire\Profile;
@@ -35,6 +36,7 @@ use App\Http\Livewire\VirtualReality;
 use Illuminate\Http\Request;
 
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\QRCodeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -51,6 +53,7 @@ Route::get('/', function () {
     return redirect('/login');
 });
 
+
 Route::middleware('guest')->group(function () {
     Route::get('/register', Register::class)->name('register');
     Route::get('/login', Login::class)->name('login');
@@ -61,6 +64,8 @@ Route::middleware('guest')->group(function () {
 
 // Page untuk user karyawan, admin, dan super admin
 Route::middleware(['auth'])->group(function () {
+    // Route::get('/qr-info-r', QRInfo::class)->name('qr-info-r');
+    // Route::get('/qr-info/{id}', [QRInfo::class, 'render'])->name('qr-info');
     Route::get('/dashboard', Dashboard::class)->name('dashboard');
     Route::get('/user-profile', UserProfile::class)->name('user-profile');
     Route::post('/updating-profile', [UserProfile::class, 'update_profile'])->name('updating-profile');
@@ -71,14 +76,15 @@ Route::middleware(['auth'])->group(function () {
     // Surat
     Route::post('/surat', SuratPelatihan::class)->name('surat');
     Route::post('/download-surat', [SuratPelatihan::class, 'downloadPDF'])->name('download-pdf');
-
 });
 
 // Page untuk user karyawan dan super admin
 Route::middleware(['auth', 'karyawan'])->group(function () {
     // Pengajuan pelatihan
     Route::get('/pengajuan-pelatihan', PengajuanPelatihan::class)->name('pengajuan-pelatihan');
+    Route::post('/add-pengajuan', [PengajuanPelatihan::class, 'add_pengajuan_pelatihan'])->name('add-pengajuan');
     Route::post('/edit-pengajuan', EditPengajuan::class)->name('edit-pengajuan');
+    Route::post('/edit-pengajuan-save', [EditPelatihan::class, 'edit_pengajuan_pelatihan'])->name('edit-pengajuan-save');
 });
 
 Route::middleware(['auth', 'admin'])->group(function () {
@@ -116,3 +122,9 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::post('/approve-pengajuan', [Verifikasi::class, 'aprrove_pengajuan'])->name('approve-pengajuan');
     Route::post('/tolak-pengajuan', TolakPengajuan::class)->name('tolak-pengajuan');
 });
+Route::controller(QRCodeController::class)->group(function () {
+    Route::get('qrcode', 'index');
+    Route::get('qrcode/download', 'download')->name('qrcode.download');
+});
+
+Route::get('/qr-info/{id}', [QRInfo::class, 'render'])->name('qr-info');

@@ -2,7 +2,7 @@
     <div class="flex flex-wrap -mx-3">
         <div class="w-full px-3 mb-6 e">
             <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-xl rounded-2xl bg-clip-border">
-                <div class="flex-auto p-4">
+                <div class="flex-auto py-4 px-8">
                     <div class="flex flex-wrap -mx-6">
                         <div class="max-w-full px-3 w-1/2 lg:flex-none">
                             <div class="mt-3 rounded-t-2xl">
@@ -12,7 +12,7 @@
                         </div>
                         <div class="max-w-full px-3 w-1/2 lg:flex-none">
                             <div class="mx-6">
-                                <a class="float-right inline-block px-6 py-3 mt-6 mb-2 font-bold text-center text-white uppercase align-middle transition-all bg-transparent border-0 rounded-lg cursor-pointer shadow-soft-md bg-150 bg-x-25 leading-pro text-size-xs bg-gradient-fuchsia hover:shadow-soft-2xl hover:scale-102" href="{{ url()->previous() }}">Back To List</a>
+                                <a class="float-right inline-block px-6 py-3 mt-6 mb-2 font-bold text-center text-white uppercase align-middle transition-all bg-transparent border-0 rounded-lg cursor-pointer shadow-soft-md bg-150 bg-x-25 leading-pro text-size-xs bg-gradient-fuchsia hover:shadow-soft-2xl hover:scale-102" href="{{ url('/history') }}">Back To List</a>
                             </div>
                         </div>
                     </div>
@@ -26,7 +26,7 @@
                     </div>
 
                     @endif
-                    <form wire:submit.prevent="add_pengajuan_pelatihan" enctype="multipart/form-data">
+                    <form action="{{ route('add-pengajuan') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="flex flex-wrap -mx-6">
                             <div class="max-w-full px-3 w-1/2 lg:flex-none">
@@ -37,7 +37,7 @@
                                     </div>
                                     <h6 class="font-bold leading-tight uppercase text-size-xs text-slate-500">Judul Pelatihan</h6>
                                     <div class="mb-4">
-                                        <input wire:model.lazy="judul_pelatihan" type="text" class="text-size-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="Masukkan judul pelatihan..." name="judul_pelatihan" aria-label="Judul Pelatihan" aria-describedby="judul_pelatihan-addon" required autofocus />
+                                        <input name="judul_pelatihan" type="text" class="text-size-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="Masukkan judul pelatihan..." aria-label="Judul Pelatihan" aria-describedby="judul_pelatihan-addon" required autofocus />
                                     </div>
                                 </div>
                             </div>
@@ -49,10 +49,10 @@
                                     </div>
                                     <h6 class="font-bold leading-tight uppercase text-size-xs text-slate-500">Kategori Pelatihan</h6>
                                     <div class="mb-4">
-                                        <select wire:model.lazy="id_kategori" type="text" class="text-size-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="Pilih kategori pelatihan..." name="id_kategori" aria-label="id_kategori" aria-describedby="id_kategori-addon" required>
+                                        <select name="id_kategori" type="text" class="text-size-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="Pilih kategori pelatihan..." aria-label="id_kategori" aria-describedby="id_kategori-addon" required>
                                             <option disabled selected value="0">Pilih kategori pelatihan...</option>
                                             @foreach($kategori as $k)
-                                            <option value="{{ $k->id }}">{{ $k->nama_kategori }}</option>
+                                                <option value="{{ $k->id }}">{{ $k->nama_kategori }}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -62,7 +62,7 @@
                         <div class="-mx-6 px-3">
                             <h6 class="font-bold leading-tight uppercase text-size-xs text-slate-500">Deskripsi Pelatihan</h6>
                             <div class="mb-4">
-                                <textarea wire:model.lazy="deskripsi_pelatihan" rows="4" class="text-size-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="Masukkan deskripsi pelatihan..." id="deskripsi_pelatihan">  </textarea>
+                                <textarea name="deskripsi_pelatihan" rows="4" class="text-size-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="Masukkan deskripsi pelatihan..." id="deskripsi_pelatihan" required>  </textarea>
                             </div>
                         </div>
                         <div class="flex flex-wrap -mx-6">
@@ -70,11 +70,11 @@
                                 <div class="flex flex-col h-full">
                                     <h6 class="font-bold leading-tight uppercase text-size-xs text-slate-500">Tanggal Dimulai</h6>
                                     <div class="mb-4">
-                                        <input wire:model.lazy="tanggal_dimulai" type="date" class="text-size-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" name="tanggal_dimulai" aria-label="Tanggal dimulai" aria-describedby="tanggal_dimulai-addon" required />
+                                        <input name="tanggal_dimulai" type="date" class="text-size-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" aria-label="Tanggal dimulai" aria-describedby="tanggal_dimulai-addon" required />
                                     </div>
                                     <h6 class="font-bold leading-tight uppercase text-size-xs text-slate-500">Biaya Pelatihan</h6>
                                     <div class="mb-4">
-                                        <input wire:model.lazy="biaya_pelatihan" type="number" class="text-size-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="500000" name="biaya_pelatihan" aria-label="Biaya Pelatihan" aria-describedby="biaya_pelatihan-addon" required />
+                                        <input name="biaya_pelatihan" type="number" class="text-size-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="500000" aria-label="Biaya Pelatihan" aria-describedby="biaya_pelatihan-addon" required />
                                     </div>
                                 </div>
                             </div>
@@ -82,11 +82,11 @@
                                 <div class="flex flex-col h-full">
                                     <h6 class="font-bold leading-tight uppercase text-size-xs text-slate-500">Tanggal Berakhir</h6>
                                     <div class="mb-4">
-                                        <input wire:model.lazy="tanggal_berakhir" type="date" class="text-size-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" name="tanggal_berakhir" placeholder="Masukkan tempat pelatihan..." aria-label="Tanggal berakhir" aria-describedby="tanggal_berakhir-addon" required />
+                                        <input name="tanggal_berakhir" type="date" class="text-size-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="Masukkan tempat pelatihan..." aria-label="Tanggal berakhir" aria-describedby="tanggal_berakhir-addon" required />
                                     </div>
                                     <h6 class="font-bold leading-tight uppercase text-size-xs text-slate-500">Tempat Pelatihan</h6>
                                     <div class="mb-4">
-                                        <input wire:model.lazy="tempat_pelatihan" type="text" class="text-size-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="Masukkan tempat pelatihan..." name="tempat_pelatihan" aria-label="Tempat Pelatihan" aria-describedby="tempat_pelatihan-addon" required />
+                                        <input name="tempat_pelatihan" type="text" class="text-size-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="Masukkan tempat pelatihan..." aria-label="Tempat Pelatihan" aria-describedby="tempat_pelatihan-addon" required />
                                     </div>
                                 </div>
                             </div>
@@ -94,7 +94,7 @@
                                 <div class="flex flex-col h-full">
                                     <h6 class="font-bold leading-tight uppercase text-size-xs text-slate-500">Bersertifikat</h6>
                                     <div class="mb-4">
-                                        <select wire:model.lazy="bersetifikat" type="text" class="text-size-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="Apakah pelatihan bersertifikat?" name="bersetifikat" aria-label="bersetifikat" aria-describedby="bersetifikat-addon" required>
+                                        <select name="bersetifikat" type="text" class="text-size-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="Apakah pelatihan bersertifikat?" aria-label="bersetifikat" aria-describedby="bersetifikat-addon" required>
                                             <option disabled selected value="">Apakah pelatihan bersertifikat?</option>
                                             <option value="true">Ya</option>
                                             <option value="false">Tidak</option>
@@ -102,7 +102,7 @@
                                     </div>
                                     <h6 class="font-bold leading-tight uppercase text-size-xs text-slate-500">Gambar Pelatihan</h6>
                                     <div class="mb-4">
-                                        <input wire:model.lazy="gambar_pelatihan" type="file" class="text-size-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow">
+                                        <input name="gambar_pelatihan" type="file" class="text-size-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow">
                                     </div>
                                 </div>
                             </div>
@@ -110,7 +110,7 @@
                                 <div class="flex flex-col h-full">
                                     <h6 class="font-bold leading-tight uppercase text-size-xs text-slate-500">Scope Pelatihan</h6>
                                     <div class="mb-4">
-                                        <input wire:model.lazy="scope_pelatihan" type="text" class="text-size-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="Masukkan scope pelatihan..." name="scope_pelatihan" aria-label="Scope Pelatihan" aria-describedby="scope_pelatihan-addon" required />
+                                        <input name="scope_pelatihan" type="text" class="text-size-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="Masukkan scope pelatihan..." aria-label="Scope Pelatihan" aria-describedby="scope_pelatihan-addon" required />
                                     </div>
                                 </div>
                             </div>

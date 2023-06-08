@@ -2,7 +2,7 @@
     <div class="flex flex-wrap -mx-3">
         <div class="w-full px-3 mb-6 e">
             <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-xl rounded-2xl bg-clip-border">
-                <div class="flex-auto p-4">
+                <div class="flex-auto py-4 px-8">
                     <div class="flex flex-wrap -mx-6">
                         <div class="max-w-full px-3 w-1/2 lg:flex-none">
                             <div class="mt-3 rounded-t-2xl">
@@ -104,7 +104,7 @@
                                 <div class="mb-4">
                                     <!-- <div class="border border-solid py-2 px-3 bg-clip-padding bg-white border-gray-300 rounded-lg"> -->
                                     <div class="text-size-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 focus:outline-none">
-                                        <a href="{{ asset('storage/images/' . $pelatihan->gambar_pelatihan) }}" target="_blank" class="text-size-sm font-bold">
+                                        <a href="{{ asset('images/' . $pelatihan->gambar_pelatihan) }}" target="_blank" class="text-size-sm font-bold">
                                             {{$pelatihan->gambar_pelatihan}}
                                         </a>
 

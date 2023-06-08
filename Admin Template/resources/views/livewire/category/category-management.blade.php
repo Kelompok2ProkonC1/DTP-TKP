@@ -55,8 +55,8 @@
                                 <td class="p-2 align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
                                     <p class="mb-0 font-semibold leading-tight text-size-xs">{{ $category->nama_kategori }}</p>
                                 </td>
-                                <td class="p-2 align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
-                                    <p id="deskripsi_kategori" class="mb-0 font-semibold leading-tight text-size-xs whitespace-pre-line" style="max-width: 250px; ">{{ $category->deskripsi_kategori }}</p>
+                                 <td class="p-2 align-middle bg-transparent border-b whitespace-pre-line shadow-transparent">
+                                            <p class="mb-0 font-semibold leading-tight text-size-xs" style="max-width: 500px; text-align: justify;">{{ $category->deskripsi_kategori }}</p>
                                 </td>
                                 <td class="p-2 text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
                                     <p class="mb-0 font-semibold leading-tight text-size-xs">{{ date('Y-m-d', $category->created_at->timestamp) }}</p>

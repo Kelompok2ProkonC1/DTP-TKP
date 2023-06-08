@@ -3,20 +3,20 @@
         <div class="relative flex items-center p-0 mt-6 overflow-hidden bg-center bg-cover min-h-75 rounded-2xl" style="background-image: url('../assets/img/curved-images/curved0.jpg'); background-position-y: 50%">
             <span class="absolute inset-y-0 w-full h-full bg-center bg-cover bg-gradient-fuchsia opacity-60"></span>
         </div>
-        <div class="relative flex flex-col flex-auto min-w-0 p-4 mx-6 -mt-16 overflow-hidden break-words border-0 shadow-blur rounded-2xl bg-white/80 bg-clip-border backdrop-blur-2xl backdrop-saturate-200">
+        {{-- <div class="relative flex flex-col flex-auto min-w-0 p-4 mx-6 -mt-16 overflow-hidden break-words border-0 shadow-blur rounded-2xl bg-white/80 bg-clip-border backdrop-blur-2xl backdrop-saturate-200"> --}}
             <div class="flex flex-wrap -mx-3">
-                <div class="flex-none w-auto max-w-full px-3">
+                {{-- <div class="flex-none w-auto max-w-full px-3">
                     <div class="text-size-base ease-soft-in-out h-18.5 w-18.5 relative inline-flex items-center justify-center rounded-xl text-white transition-all duration-200">
                         <img src="../assets/img/bruce-mars.jpg" alt="profile_image" class="w-full shadow-soft-sm rounded-xl" />
                     </div>
-                </div>
-                <div class="flex-none w-auto max-w-full px-3 my-auto">
+                </div> --}}
+                {{-- <div class="flex-none w-auto max-w-full px-3 my-auto">
                     <div class="h-full">
                         <h5 class="mb-1">{{ auth()->user()->nama_user }}</h5>
-                        <p class="mb-0 font-semibold leading-normal text-size-sm">CEO / Co-Founder</p>
+                        <p class="mb-0 font-semibold leading-normal text-size-sm">{{ auth()->user()->nama_divisi }}</p>
                     </div>
-                </div>
-                <div class="w-full max-w-full px-3 mx-auto mt-4 sm:my-auto sm:mr-0 md:w-1/2 md:flex-none lg:w-4/12">
+                </div> --}}
+                {{-- <div class="w-full max-w-full px-3 mx-auto mt-4 sm:my-auto sm:mr-0 md:w-1/2 md:flex-none lg:w-4/12">
                     <div class="relative right-0">
                         <ul class="relative flex flex-wrap p-1 list-none bg-transparent rounded-xl" nav-pills role="tablist">
                             <li class="z-30 flex-auto text-center">
@@ -80,7 +80,7 @@
                             </li>
                         </ul>
                     </div>
-                </div>
+                </div> --}}
             </div>
         </div>
     </div>
@@ -145,7 +145,7 @@
                                     </h6>
 
                                     <div class="mb-4">
-                                        <input name="nik_user" type="phone" class="text-size-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="NIK" id="phone" value="{{ auth()->user()->nik_user }}" required />
+                                        <input name="nik_user" type="phone" class="text-size-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="NIK" id="phone" value="{{ auth()->user()->nik_user }}" required maxlength="16" minlength="16"/>
                                         @error('nik_user') <p class="text-size-sm text-red-500">{{ $message }}</p>
                                         @enderror
 

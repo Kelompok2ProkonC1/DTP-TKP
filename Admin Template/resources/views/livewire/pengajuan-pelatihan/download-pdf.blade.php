@@ -97,7 +97,10 @@
         </table>
         <p class="content">Demikianlah surat ini kami sampaikan sebagai tindak lanjut dari pengajuan pelatihan karyawan. Atas perhatian dan kerjasamanya kami ucapkan terimakasih</p>
         <p class ="signature"><br>Hormat kami,</p>
-        <!-- <img src="qr_code.png" alt="QR Code"> -->
+         {{-- <img src="qr_code.png" alt="QR Code">  --}}
+        {{-- {!! QrCode::size(100)->generate('bintang ganteng gitu?'); !!} --}}
+        {{-- <img src="{!!QrCode::format('png')->generate(route('qr-info', ['id' => $surat->id])) !!}"> --}}
+        <img src="data:image/png;base64,{{ base64_encode(QrCode::format('png')->generate(route('qr-info', ['id' => $surat->id])) ) }}" >
         <div class="admin">
             <p><u>{{ $admin->nama_user }}</u></p>
             <p>{{ $div_admin->nama_divisi }}</p>

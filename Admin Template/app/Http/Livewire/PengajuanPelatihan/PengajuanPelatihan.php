@@ -16,17 +16,6 @@ class PengajuanPelatihan extends Component
 {
     use WithFileUploads;
 
-    public $judul_pelatihan = '';
-    public $id_kategori = 0;
-    public $deskripsi_pelatihan = '';
-    public $tanggal_dimulai = '';
-    public $tanggal_berakhir = '';
-    public $biaya_pelatihan;
-    public $tempat_pelatihan = '';
-    public $bersetifikat = '';
-    public $scope_pelatihan = '';
-    public $gambar_pelatihan;
-
     protected $rules = [
         'judul_pelatihan' => 'required',
         'id_kategori' => 'required',
@@ -43,25 +32,26 @@ class PengajuanPelatihan extends Component
     public function add_pengajuan_pelatihan(Request $request)
     {
         // Validate the rules above.
-        $this->validate();
+        // $this->validate();
 
         // Generate unique file name
-        $fileName = time() . '.' . $this->gambar_pelatihan->getClientOriginalExtension();
-        
+        $fileName = time() . '.' . $request->file('gambar_pelatihan')->getClientOriginalExtension();
+
         // Move file
-        $this->gambar_pelatihan->storeAs('public/images', $fileName);
+        $request->file('gambar_pelatihan')->move(public_path('images'), $fileName);
+        // $request->file('gambar_pelatihan')->storeAs('public/images', $fileName);
 
         // Save into the database.
         Pelatihan::create([
-            'judul_pelatihan' => $this->judul_pelatihan,
-            'id_kategori' => $this->id_kategori,
-            'deskripsi_pelatihan' => $this->deskripsi_pelatihan,
-            'tanggal_dimulai' => $this->tanggal_dimulai,
-            'tanggal_berakhir' => $this->tanggal_berakhir,
-            'biaya_pelatihan' => $this->biaya_pelatihan,
-            'tempat_pelatihan' => $this->tempat_pelatihan,
-            'bersetifikat' => $this->bersetifikat,
-            'scope_pelatihan' => $this->scope_pelatihan,
+            'judul_pelatihan' => $request->input('judul_pelatihan'),
+            'id_kategori' => $request->input('id_kategori'),
+            'deskripsi_pelatihan' => $request->input('deskripsi_pelatihan'),
+            'tanggal_dimulai' => $request->input('tanggal_dimulai'),
+            'tanggal_berakhir' => $request->input('tanggal_berakhir'),
+            'biaya_pelatihan' => $request->input('biaya_pelatihan'),
+            'tempat_pelatihan' => $request->input('tempat_pelatihan'),
+            'bersetifikat' => $request->input('bersetifikat'),
+            'scope_pelatihan' => $request->input('scope_pelatihan'),
             'gambar_pelatihan' => $fileName,
         ]);
 
@@ -76,8 +66,7 @@ class PengajuanPelatihan extends Component
 
         session()->flash('status', 'Pelatihan berhasil diajukan!');
 
-        // Reset value input.
-        $this->reset();
+        return redirect()->route('history');
     }
 
     public function render(Request $request)

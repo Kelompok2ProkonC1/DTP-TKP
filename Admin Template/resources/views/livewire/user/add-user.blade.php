@@ -2,7 +2,7 @@
     <div class="flex flex-wrap -mx-3">
         <div class="w-full px-3 mb-6 e">
             <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-xl rounded-2xl bg-clip-border">
-                <div class="flex-auto p-4">
+                <div class="flex-auto py-4 px-8">
                     <div class="flex flex-wrap -mx-6">
                         <div class="max-w-full px-3 w-1/2 lg:flex-none">
                             <div class="mt-3 rounded-t-2xl">
@@ -39,7 +39,7 @@
                                     </div>
                                     <h6 class="font-bold leading-tight uppercase text-size-xs text-slate-500">NIK</h6>
                                     <div class="mb-4">
-                                        <input wire:model.lazy="nik" type="text" class="text-size-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="Masukkan NIK User..." name="nik" aria-label="NIK" aria-describedby="nik-addon" pattern=".{16,}" maxlength="16" required title="must 16 digit numbers" />
+                                        <input wire:model.lazy="nik" type="text" class="text-size-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="Masukkan NIK User..." name="nik" aria-label="NIK" aria-describedby="nik-addon" maxlength="16" minlength="16" required title="must 16 digit numbers" />
                                         @error('nik')
                                         {{-- <p class="text-size-sm text-red-500">{{ $message }}</p> --}}
                                         @enderror
