@@ -16,4 +16,6 @@
 - Laravel Mail Package
   - "<i>composer require illuminate/mail</i>"
 - Download PDF
-  - "composer require barryvdh/laravel-dompdf"
+  - "<i>composer require barryvdh/laravel-dompdf</i>"
+- QR Code
+  - "<i>composer require simplesoftwareio/simple-qrcode</i>"
