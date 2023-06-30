@@ -9,7 +9,7 @@
             <a class="py-2.375 text-size-sm mr-4 ml-4 whitespace-nowrap font-bold lg:ml-0 
             
             {{ Request::is('static-sign-up') || Request::is('register') ? 'text-white' : 'text-slate-700' }}"
-                href="{{ url('dashboard') }}">  <img src="asset('logodtptkp.jpg')" class="inline h-full max-w-full transition-all duration-200 ease-nav-brand max-h-8" alt="main_logo" />
+                href="{{ url('dashboard') }}">  <img src="https://dtptkp-fe-dtptkp-dev.apps-okd-1-maas.playcourt.id/assets/logo.svg" class="inline h-full max-w-full transition-all duration-200 ease-nav-brand max-h-8" alt="main_logo" />
             DTP-TKP</a>
             <button navbar-trigger
                 class="px-3 py-1 ml-2 leading-none transition-all bg-transparent border border-transparent border-solid rounded-lg shadow-none cursor-pointer text-size-lg ease-soft-in-out lg:hidden"

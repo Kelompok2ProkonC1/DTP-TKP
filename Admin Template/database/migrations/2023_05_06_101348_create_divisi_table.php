@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('divisi', function (Blueprint $table) {
             $table->id();
             $table->string('nama_divisi')->required();
-            $table->string('deskripsi_divisi')->required();
+            $table->text('deskripsi_divisi')->required();
             $table->timestamps();
         });
     }

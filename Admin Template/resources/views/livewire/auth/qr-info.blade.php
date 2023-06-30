@@ -7,7 +7,7 @@
                 <div class="card">
                 <div class="flex items-center justify-between p-6 pb-0 mb-0 bg-white border-b-0 border-b-solid rounded-t-2xl border-b-transparent">
                 <div class="pb-0 mb-0 bg-white border-b-0 border-b-solid rounded-t-2xl border-b-transparent">
-                    <h5><b>Cek Ajuan Surat</b></h5>
+                    <h2><b>Cek Ajuan Surat</b></h2>
                     <div class="card-body">
                         <table class="table">
                             <tbody>
@@ -52,7 +52,7 @@
                                     <td>Diterima</td>
                                 </tr>
                                 <tr>
-                                    <td>Ditandatangai oleh</td>
+                                    <td>Ditandatangani oleh</td>
                                     <td>:</td>
                                     <td>{{ $admin->nama_user }}</td>
                                 </tr>
@@ -60,6 +60,11 @@
                                     <td>Divisi</td>
                                     <td>:</td>
                                     <td>{{ $div_admin->nama_divisi }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Tanggal Verifikasi</td>
+                                    <td>:</td>
+                                    <td>{{ $pengajuan->tanggal_verifikasi }}</td>
                                 </tr>
 
                             </tbody>

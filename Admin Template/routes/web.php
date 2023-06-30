@@ -84,7 +84,7 @@ Route::middleware(['auth', 'karyawan'])->group(function () {
     Route::get('/pengajuan-pelatihan', PengajuanPelatihan::class)->name('pengajuan-pelatihan');
     Route::post('/add-pengajuan', [PengajuanPelatihan::class, 'add_pengajuan_pelatihan'])->name('add-pengajuan');
     Route::post('/edit-pengajuan', EditPengajuan::class)->name('edit-pengajuan');
-    Route::post('/edit-pengajuan-save', [EditPelatihan::class, 'edit_pengajuan_pelatihan'])->name('edit-pengajuan-save');
+    Route::post('/edit-pengajuan-save', [EditPengajuan::class, 'edit_pengajuan_pelatihan'])->name('edit-pengajuan-save');
 });
 
 Route::middleware(['auth', 'admin'])->group(function () {

@@ -49,21 +49,20 @@ class EditPengajuan extends Component
     {
         // Validate the rules above.
         // $this->validate();
-        
-        if($request->file('gambar_pelatihan') != null)
-        {
-            Storage::delete('public/images/' . $this->gambar_pelatihan_before);
+
+        if ($request->file('gambar_pelatihan') != null) {
+            Storage::delete('images/' . $this->gambar_pelatihan_before);
 
             // Generate unique file name
-            $fileName = time() . '.' . $request->file('judul_pelatihan')->getClientOriginalExtension();
-            
+            $fileName = time() . '.' . $request->file('gambar_pelatihan')->getClientOriginalExtension();
+
             // Move file
             $request->file('gambar_pelatihan')->move(public_path('images'), $fileName);
         }
 
         // Find specific row.
-        $pelatihan = Pelatihan::find($this->id_pelatihan);
-        $pengajuan = Pengajuan::find($this->id_pengajuan);
+        $pelatihan = Pelatihan::find($request->input('id_pelatihan'));
+        $pengajuan = Pengajuan::find($request->input('id_pengajuan'));
 
         // Set all data in row pelatihan's table
         $pelatihan->judul_pelatihan = $request->input('judul_pelatihan');
@@ -73,17 +72,16 @@ class EditPengajuan extends Component
         $pelatihan->tanggal_berakhir = $request->input('tanggal_berakhir');
         $pelatihan->biaya_pelatihan = $request->input('biaya_pelatihan');
         $pelatihan->tempat_pelatihan = $request->input('tempat_pelatihan');
-        $pelatihan->bersetifikat = $request->input('bersertifikat');
+        $pelatihan->bersetifikat = $request->input('bersetifikat');
         $pelatihan->scope_pelatihan = $request->input('scope_pelatihan');
-        if($request->file('gambar_pelatihan') != null)
-        {
+        if ($request->file('gambar_pelatihan') != null) {
             $pelatihan->gambar_pelatihan = $fileName;
         }
 
-        
+
         $pengajuan->tanggal_pengajuan = now();
         $pengajuan->status_pengajuan = "Belum";
-        
+
         // Save the update data.
         $pelatihan->save();
         $pengajuan->save();
@@ -96,8 +94,7 @@ class EditPengajuan extends Component
 
     public function render(Request $request)
     {
-        if($this->id_pengajuan == null)
-        {
+        if ($this->id_pengajuan == null) {
             $this->id_pengajuan = $request->input('id');
         }
         $pengajuan = Pengajuan::find($this->id_pengajuan);
@@ -106,8 +103,7 @@ class EditPengajuan extends Component
         $pelatihan = Pelatihan::find($pengajuan->id_pelatihan);
         $kategori = Category::all();
 
-        if($this->flag == false)
-        {
+        if ($this->flag == false) {
             $this->id_pelatihan = $pelatihan->id;
             $this->judul_pelatihan = $pelatihan->judul_pelatihan;
             $this->id_kategori = $pelatihan->id_kategori;
@@ -123,5 +119,5 @@ class EditPengajuan extends Component
         }
 
         return view('livewire.pengajuan-pelatihan.edit-pengajuan', compact('divisi', 'user', 'pengajuan', 'pelatihan', 'kategori'));
-    }  
+    }
 }

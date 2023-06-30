@@ -141,7 +141,7 @@
                     <div class="w-full max-w-full px-3 lg:w-4/12 lg:flex-none">
 
                         <div class="relative h-full overflow-hidden bg-cover rounded-xl" style="background-image: url('../assets/img/bg-dashboard')">
-                            <span class="absolute top-0 left-0 w-full h-full bg-center bg-cover bg-gradient-cyan opacity-80"></span>
+                            <span class="absolute top-0 left-0 w-full h-full bg-center bg-cover bg-gradient-slate opacity-80"></span>
                             <div class="relative z-10 flex flex-col flex-auto h-full p-4">
                                 <h5 class="text-center pt-2 mb-6 font-bold text-white">Pengajuan Pelatihan<br>"Belum diverifikasi"</h5>
                                 <h1 class="text-center pt-2 mb-6 font-bold text-white">{{$belum}}</h1>
@@ -158,7 +158,7 @@
                     <div class="w-full max-w-full px-3 lg:w-4/12 lg:flex-none">
 
                         <div class="relative h-full overflow-hidden bg-cover rounded-xl" style="background-image: url('../assets/img/bg-dashboard')">
-                            <span class="absolute top-0 left-0 w-full h-full bg-center bg-cover bg-gradient-cyan opacity-80"></span>
+                            <span class="absolute top-0 left-0 w-full h-full bg-center bg-cover bg-gradient-red opacity-80"></span>
                             <div class="relative z-10 flex flex-col flex-auto h-full p-4">
                                 <h5 class="pt-2 mb-6 font-bold text-white text-center">Pengajuan Pelatihan<br>"Ditolak"</h5>
                                 <h1 class="pt-2 mb-6 font-bold text-white text-center">{{$ditolak}}</h1>
@@ -171,7 +171,7 @@
                     <div class="w-full max-w-full px-3 lg:w-4/12 lg:flex-none">
 
                         <div class="relative h-full overflow-hidden bg-cover rounded-xl" style="background-image: url('../assets/img/bg-dashboard')">
-                            <span class="absolute top-0 left-0 w-full h-full bg-center bg-cover bg-gradient-cyan opacity-80"></span>
+                            <span class="absolute top-0 left-0 w-full h-full bg-center bg-cover bg-gradient-lime opacity-80"></span>
                             <div class="relative z-10 flex flex-col flex-auto h-full p-4">
                                 <h5 class="pt-2 mb-6 font-bold text-white text-center">Pengajuan Pelatihan<br>"Diterima"</h5>
                                 <h1 class="pt-2 mb-6 font-bold text-white text-center">{{$diterima}}</h1>

@@ -26,8 +26,10 @@
                     </div>
 
                     @endif
-                    <form action="{{ route('save-edit-pengajuan') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('edit-pengajuan-save') }}" method="POST" enctype="multipart/form-data">
                         @csrf
+                        <input type="text" name="id_pelatihan" value="{{$pelatihan->id}}" hidden>
+                        <input type="text" name="id_pengajuan" value="{{$pengajuan->id}}" hidden>
                         <div class="-mx-6 px-3">
                             <h6 class="font-bold leading-tight uppercase text-size-xs text-slate-500">Deskripsi Revisi</h6>
                             <div class="mb-4">
@@ -43,7 +45,7 @@
                                     </div>
                                     <h6 class="font-bold leading-tight uppercase text-size-xs text-slate-500">Judul Pelatihan</h6>
                                     <div class="mb-4">
-                                        <input name="judul_pelatihan" type="text" class="text-size-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="Masukkan judul pelatihan..." aria-label="Judul Pelatihan" aria-describedby="judul_pelatihan-addon" required autofocus />
+                                        <input name="judul_pelatihan" type="text" class="text-size-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="Masukkan judul pelatihan..." aria-label="Judul Pelatihan" aria-describedby="judul_pelatihan-addon" required autofocus value="{{$pelatihan->judul_pelatihan}}"/>
                                     </div>
                                 </div>
                             </div>
@@ -72,7 +74,7 @@
                         <div class="-mx-6 px-3">
                             <h6 class="font-bold leading-tight uppercase text-size-xs text-slate-500">Deskripsi Pelatihan</h6>
                             <div class="mb-4">
-                                <textarea name="deskripsi_pelatihan" rows="4" class="text-size-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="Masukkan deskripsi pelatihan..." id="deskripsi_pelatihan">  </textarea>
+                                <textarea name="deskripsi_pelatihan" rows="4" class="text-size-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="Masukkan deskripsi pelatihan..." id="deskripsi_pelatihan">{{$pelatihan->deskripsi_pelatihan}}</textarea>
                             </div>
                         </div>
                         <div class="flex flex-wrap -mx-6">
@@ -80,11 +82,11 @@
                                 <div class="flex flex-col h-full">
                                     <h6 class="font-bold leading-tight uppercase text-size-xs text-slate-500">Tanggal Dimulai</h6>
                                     <div class="mb-4">
-                                        <input name="tanggal_dimulai" type="date" class="text-size-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" aria-label="Tanggal dimulai" aria-describedby="tanggal_dimulai-addon" required />
+                                        <input name="tanggal_dimulai" type="date" class="text-size-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" aria-label="Tanggal dimulai" aria-describedby="tanggal_dimulai-addon" required value="{{$pelatihan->tanggal_dimulai}}"/>
                                     </div>
                                     <h6 class="font-bold leading-tight uppercase text-size-xs text-slate-500">Biaya Pelatihan</h6>
                                     <div class="mb-4">
-                                        <input name="biaya_pelatihan" type="number" class="text-size-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="500000" aria-label="Biaya Pelatihan" aria-describedby="biaya_pelatihan-addon" required />
+                                        <input name="biaya_pelatihan" type="number" class="text-size-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="500000" aria-label="Biaya Pelatihan" aria-describedby="biaya_pelatihan-addon" required value="{{$pelatihan->biaya_pelatihan}}"/>
                                     </div>
                                 </div>
                             </div>
@@ -92,11 +94,11 @@
                                 <div class="flex flex-col h-full">
                                     <h6 class="font-bold leading-tight uppercase text-size-xs text-slate-500">Tanggal Berakhir</h6>
                                     <div class="mb-4">
-                                        <input name="tanggal_berakhir" type="date" class="text-size-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="Masukkan tempat pelatihan..." aria-label="Tanggal berakhir" aria-describedby="tanggal_berakhir-addon" required />
+                                        <input name="tanggal_berakhir" type="date" class="text-size-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="Masukkan tempat pelatihan..." aria-label="Tanggal berakhir" aria-describedby="tanggal_berakhir-addon" required value="{{$pelatihan->tanggal_berakhir}}"/>
                                     </div>
                                     <h6 class="font-bold leading-tight uppercase text-size-xs text-slate-500">Tempat Pelatihan</h6>
                                     <div class="mb-4">
-                                        <input name="tempat_pelatihan" type="text" class="text-size-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="Masukkan tempat pelatihan..." aria-label="Tempat Pelatihan" aria-describedby="tempat_pelatihan-addon" required />
+                                        <input name="tempat_pelatihan" type="text" class="text-size-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="Masukkan tempat pelatihan..." aria-label="Tempat Pelatihan" aria-describedby="tempat_pelatihan-addon" required value="{{$pelatihan->tempat_pelatihan}}"/>
                                     </div>
                                 </div>
                             </div>
@@ -106,8 +108,13 @@
                                     <div class="mb-4">
                                         <select name="bersetifikat" type="text" class="text-size-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="Apakah pelatihan bersertifikat?" aria-label="bersetifikat" aria-describedby="bersetifikat-addon" required>
                                             <option disabled selected value="">Apakah pelatihan bersertifikat?</option>
-                                            <option value="true">Ya</option>
-                                            <option value="false">Tidak</option>
+                                            @if($pelatihan->bersetifikat == "true")
+                                                <option selected value="true">Ya</option>
+                                                <option value="false">Tidak</option>
+                                            @else
+                                                <option value="true">Ya</option>
+                                                <option selected value="false">Tidak</option>
+                                            @endif
                                         </select>
                                     </div>
                                     <h6 class="font-bold leading-tight uppercase text-size-xs text-slate-500">Gambar Pelatihan</h6>
@@ -126,7 +133,7 @@
                                 <div class="flex flex-col h-full">
                                     <h6 class="font-bold leading-tight uppercase text-size-xs text-slate-500">Scope Pelatihan</h6>
                                     <div class="mb-4">
-                                        <input name="scope_pelatihan" type="text" class="text-size-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="Masukkan scope pelatihan..." aria-label="Scope Pelatihan" aria-describedby="scope_pelatihan-addon" required />
+                                        <input name="scope_pelatihan" type="text" class="text-size-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="Masukkan scope pelatihan..." aria-label="Scope Pelatihan" aria-describedby="scope_pelatihan-addon" required value="{{$pelatihan->scope_pelatihan}}"/>
                                     </div>
                                 </div>
                             </div>

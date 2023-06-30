@@ -57,6 +57,10 @@
         body{
             font-family: 'Poppins', sans-serif !important;
         }
+        input[readonly]
+        {
+        background-color:#D3D3D3 !important;
+        }
     </style>
     @vite('resources/css/app.css')
 
